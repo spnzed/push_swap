@@ -3,16 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 08:28:32 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/13 08:52:11 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/22 11:12:28 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "action_defs.h"
 #include <stdlib.h>
+
+static void rotate_finish(t_stack *stk)
+{
+    int     *limits;
+    int     size;
+    t_list  *aux;
+
+    limits = NULL;
+    aux = stk->stack_a;
+    limits = stk_limits(aux);
+    size = ft_lstsize(stk->stack_a) / 2;
+    while (finish_check(stk) < 1)
+    {
+        if (ft_lstpos(stk->stack_a, &limits[0]) < size)
+            rotate_a(stk, 1);
+        else if (ft_lstpost(stk->stack_a, &limits[0]) >= size)
+            reverse_rotate_a(stk, 1);
+    }
+    free(limits);
+}
 
 static void fill_list(t_list **lst, int amount, int *value)
 {

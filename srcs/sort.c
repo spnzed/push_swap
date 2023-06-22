@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 10:20:01 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/05 11:46:37 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/22 11:14:20 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void    init_sort(t_stack *stk)
         push_b(stk, 1);
         if (ft_lstsize(stk->stack_a) > 3)
             push_b(stk, 1);
-        start_move(stk);
+        move(stk);
     }
 }

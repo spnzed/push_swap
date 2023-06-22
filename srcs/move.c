@@ -3,102 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 08:18:16 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/13 08:26:14 by aaronespino      ###   ########.fr       */
+/*   Created: 2023/06/13 08:54:53 by aaronespino       #+#    #+#             */
+/*   Updated: 2023/06/22 11:13:13 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "action_defs.h"
 
-static int *find_p(int n, t_list *lst, int phase)
+static void move(t_stack *stk)
+{
+    t_list  *actions;
+    int     *limits;
+
+    while (ft_lstsize(stk->stack_a) > 3)
+    {
+        limits = stk_limits(stk->stack_b);
+        actions = calculate_moves(stk, limits, 0);
+        parse_move(stk, actions);
+        free(limits);
+        ft_lstclear(&actions, (void *) ft_delete);
+    }
+    sort_3(stk);
+    while (ft_lstsize(stk->stack_b) > 0)
+    {
+        limits = stk_limits(stk->stack_a);
+        actions  = calculate_moves(stk, limits, 1);
+        parse_move(stk, actions);
+        free(limits);
+        ft_lstclear(&actions, (void *)ft_delete);
+    }
+    rotate_finish(stk);
+}
+
+void    parse_move(t_stack *stk, t_list *actions)
 {
     t_list  *aux;
-    int     *i;
-    int     *target;
+    int     *act;
 
-    aux = lst;
-    target = NULL;
+    aux = actions;
     while (aux)
     {
-        i = aux->content;
-        if (!target)
-        {
-            if (phase == 0 && *i < n || (phase == 1 && *i > n))
-                target = i;
-        }
-        else
-        {
-            if ((phase == 0 && *i < n && *i > *target)
-            || (phase == 1 && *i > n && *i < target))
-            target = i;
-        }
+        act = aux->content;
+        if (*act == PUSH_A)
+            push_a(stk, 1);
+        else if (*act == PUSH_B)
+            push_b(stk, 1);
+        else if (*act == ROTATE_A)
+            rotate_a(stk, 1);
+        else if (*act == ROTATE_B)
+            rotate_b(stk, 1);
+        else if (*act == ROTATE_R)
+            rotate_r(stk, 1);
+        else if (*act == REV_ROTATE_A)
+            reverse_rotate_a(stk, 1);
+        else if (*act == REV_ROTATE_B)
+            reverse_rotate_b(stk, 1);
+        else if (*act == REV_ROTATE_R)
+            reverse_rotate_r(stk, 1);
         aux = aux->next;
     }
-    return (target);
-}
-
-static t_list *get_cheapest(t_list *tmp_act, t_list *cheapest_act, int stack)
-{
-    if (ft_lst_size(tmp_act) > 1)
-        check_merge(&tmp_act);
-    add_push(&tmp_act, stack);
-    if (!cheapest_act)
-        cheapest_act = tmp_act;
-    else if (ft_lstsize(cheapest_act) > ft_lst_size(tmp_act))
-    {
-        ft_lstclear(&cheapest_act, (void *)ft_delete);
-        cheapest_act = tmp_act;
-    }
-    else
-        ft_lstclear(&tmp_act, (void *)ft_delete);
-    return (cheapest_act);
-}
-
-static t_list   *get_temp(t_stack *stk, int *aux, int *limits, int id)
-{
-    t_list  *tmp;
-
-    tmp = ft_lstnew(NULL);
-    if (id == 0 && (*aux > limits[1] || *aux < limits[0]))
-    {
-        calc_rot(stk->stack_b, &limits[1], 1, &tmp);
-        calc_rot(stk->stack_a, aux, 0, &tmp);
-    }
-    else if (id == 0)
-    {
-        calc_rot(stk->stack_b, find_p(*aux, stk->stack_b, 0), 1, &tmp);
-        calc_rot(stk->stack_a, aux, 0, &tmp);
-    }
-    else if (id == 1 && (*aux > limits[1] || *aux < limits[0]))
-    {
-        calc_rot(stk->stack_a, &limits[0], 0, &tmp);
-        calc_rot(stk->stack_b, aux, 1, &tmp);
-    }
-    else if (id == 1)
-    {
-        calc_rot(stk->stack_a, find_p(*aux, stk->stack_a, 1), 0, &tmp);
-        calc_rot(stk->stack_b, aux, 1, &tmp);
-    }
-    return (tmp);
-}
-
-t_list  *calculate_moves(t_stack *stk, int *limits, int id)
-{
-    t_list  *cheap;
-    t_list  *tmp;
-    t_list  *aux;
-
-    aux = stk->stack_a;
-    if (id == 1)
-        aux = stk->stack_b;
-    cheap = NULL;
-    while (aux)
-    {
-        tmp = get_temp(stk, aux->content, limits, id);
-        cheap = get_cheapest(tmp, cheap, id);
-        aux = aux->next;
-    }
-    return (cheap)
 }
