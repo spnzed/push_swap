@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 08:18:16 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/13 08:26:14 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/24 20:55:50 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,24 @@ t_list  *calculate_moves(t_stack *stk, int *limits, int id)
         cheap = get_cheapest(tmp, cheap, id);
         aux = aux->next;
     }
-    return (cheap)
+    return (cheap);
+}
+
+int *stk_limits(t_list *lst)
+{
+    t_list *aux;
+    int *limits;
+
+    limits = malloc(sizeof(int) * 2);
+    aux = lst;
+    limits[0] = *(int *)aux->content;
+    limits[1] = *(int *)aux->content;
+    while (aux)
+    {
+        if (*(int *)aux->content > limits[1])
+            limits[1] = *(int *)aux->content;
+        else if (*(int *)aux->content < limits[0])
+            limits[0] = *(int *)aux->content;
+    }
+    return (limits);
 }

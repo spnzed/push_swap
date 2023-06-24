@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/05 11:40:42 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/24 20:39:39 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ void    push_swap(char **str)
     int size;
     t_stack *stk;
 
-    if (*str[1] == '\0')
-    {
-        ft_putstr_fd("Error\n", 2);
-        return (0);
-    }
     stk = malloc(sizeof(t_stack));
     stk->stack_a = parsing_i(str);
     if (stk->stack_a)
@@ -43,6 +38,11 @@ void    push_swap(char **str)
 
 int main(int argc, char *argv[])
 {
+    if (*argv[1] == '\0')
+    {
+        ft_putstr_fd("Error\n", 2);
+        return (0);
+    }
     if (argc > 1)
         push_swap(argv);
     return (0);

@@ -1,19 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge.c                                            :+:      :+:    :+:   */
+/*   merge_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 08:24:40 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/13 08:52:13 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/24 21:00:35 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "libft.h"
 #include "action_lst.h"
 #include "action_defs.h"
 #include <stdlib.h>
+
+void    parse_move(t_stack *stk, t_list *actions)
+{
+    t_list  *aux;
+    int     *act;
+
+    aux = actions;
+    while (aux)
+    {
+        act = aux->content;
+        if (*act == PUSH_A)
+            push_a(stk, 1);
+        else if (*act == PUSH_B)
+            push_b(stk, 1);
+        else if (*act == ROTATE_A)
+            rotate_a(stk, 1);
+        else if (*act == ROTATE_B)
+            rotate_b(stk, 1);
+        else if (*act == ROTATE_R)
+            rotate_r(stk, 1);
+        else if (*act == REV_ROTATE_A)
+            reverse_rotate_a(stk, 1);
+        else if (*act == REV_ROTATE_B)
+            reverse_rotate_b(stk, 1);
+        else if (*act == REV_ROTATE_R)
+            reverse_rotate_r(stk, 1);
+        aux = aux->next;
+    }
+}
 
 static void add_actions(t_list **lst, int action, int times)
 {
@@ -80,7 +110,6 @@ static void check_merge_2(t_list **lst, t_actions **acts)
         ft_lstclear(&aux, (void *)ft_delete);
     }
 }
-
 
 void    check_merge(t_list **lst)
 {

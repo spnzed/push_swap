@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 10:20:01 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/05 11:46:37 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/24 20:47:18 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,5 @@ void    sort_3(t_stack *stk)
             else if (*i > *j && *i < *k)
                 swap_a(stk, 1);
         }
-    }
-}
-
-void    init_sort(t_stack *stk)
-{
-    if (finish_check(stk) < 1)
-    {
-        push_b(stk, 1);
-        if (ft_lstsize(stk->stack_a) > 3)
-            push_b(stk, 1);
-        start_move(stk);
     }
 }
