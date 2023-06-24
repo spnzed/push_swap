@@ -48,10 +48,10 @@ void    		init_sort(t_stack *stk);
 void            push_b(t_stack *stk, int print)
 static void 	move(t_stack *stk);
 
-- 𝑲𝒏𝒐𝒘 𝒕𝒉𝒆 𝒍𝒊𝒎𝒊𝒕𝒔 𝒂𝒏𝒅 C𝒂𝒍𝒄𝒖𝒍𝒂𝒕𝒆 𝒎𝒐𝒗𝒆𝒔
+- 𝑲𝒏𝒐𝒘 𝒕𝒉𝒆 𝒍𝒊𝒎𝒊𝒕𝒔
   - 𝑳𝒊𝒎𝒊𝒕𝒔
     - int 			*stk_limits(t_list *lst);
-  - 𝘾𝙖𝙡𝙘𝙪𝙡𝙖𝙩𝙚 𝙢𝙤𝙫𝙚𝙨
+- 𝘾𝙖𝙡𝙘𝙪𝙡𝙖𝙩𝙚 𝙢𝙤𝙫𝙚𝙨
     - t_list  		*calculate_moves(t_stack *stk, int *limits, int id);
         - static t_list   *get_temp(t_stack *stk, int *aux, int *limits, int id);
             - void    		*calc_rot(t_list *lst, int *value, int stack, t_list **action);
@@ -62,8 +62,10 @@ static void 	move(t_stack *stk);
                 - static t_list   *merge_actions(t_actions **acts);
                 - static void 	add_actions(t_list **lst, int action, int times);
                 - void    		add_push(t_list **action, int stack);
-        - void    		parse_move(t_stack *stk, t_list *actions);
-        - static void 	rotate_finish(t_stack *stk);
+- 𝘿𝙤 𝙩𝙝𝙚 𝙖𝙘𝙩𝙞𝙤𝙣
+    - void    		parse_move(t_stack *stk, t_list *actions);
+- 𝙁𝙞𝙣𝙖𝙡 𝙧𝙤𝙩𝙖𝙩𝙞𝙤𝙣
+    - static void 	rotate_finish(t_stack *stk);
 
 void    		push_swap(char **str);
 static void 	fill_list(t_list **lst, int amount, int *value);
