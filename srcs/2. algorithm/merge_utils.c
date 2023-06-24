@@ -6,15 +6,11 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 08:24:40 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 21:00:35 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:30:21 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
-#include "action_lst.h"
-#include "action_defs.h"
-#include <stdlib.h>
 
 void    parse_move(t_stack *stk, t_list *actions)
 {

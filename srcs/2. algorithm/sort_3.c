@@ -6,12 +6,12 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 10:20:01 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 20:47:18 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:30:28 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
+
 
 int finish_check(t_stack *stk)
 {
