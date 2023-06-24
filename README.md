@@ -58,10 +58,10 @@ static void 	move(t_stack *stk);
                 - static void		fill_list(t_list **lst, int amount, int *value);
                 - static int 		*find_p(int n, t_list *lst, int phase);
         - static t_list 	*get_cheapest(t_list *tmp_act, t_list *cheapest_act, int stack);
-                - void    		check_merge(t_list **lst);
-                - static t_list   *merge_actions(t_actions **acts);
-                - static void 	add_actions(t_list **lst, int action, int times);
-                - void    		add_push(t_list **action, int stack);
+                  - void    		check_merge(t_list **lst);
+                  - static t_list   *merge_actions(t_actions **acts);
+                  - static void 	add_actions(t_list **lst, int action, int times);
+                  - void    		add_push(t_list **action, int stack);
 - 𝘿𝙤 𝙩𝙝𝙚 𝙖𝙘𝙩𝙞𝙤𝙣
     - void    		parse_move(t_stack *stk, t_list *actions);
 - 𝙁𝙞𝙣𝙖𝙡 𝙧𝙤𝙩𝙖𝙩𝙞𝙤𝙣
