@@ -6,7 +6,7 @@
 #    By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 21:36:56 by aaespino          #+#    #+#              #
-#    Updated: 2023/06/24 21:44:45 by aaespino         ###   ########.fr        #
+#    Updated: 2023/06/24 21:51:03 by aaespino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ INCLUDE  = -I ./include/ -I ./libft/include/
 
 									SRCS									  
 SRCS_DIR = srcs/
-SRC_FILES =	 srcs/1. parsing/checking.c
+SRC_FILES =	srcs/push_swap.c 
+			srcs/1. parsing/checking.c
 			srcs/1. parsing/parsing.c
 			srcs/2. algorithm/calculate_utils.c
 			srcs/2. algorithm/merge_utils.c
@@ -49,7 +50,6 @@ OBJ_ACTION_FILES = $(SRC_ACTION_FILES:.c=.o)
 OBJS_ACTIONS = $(addprefix $(OBJS_ACTIONS_DIR), $(OBJ_ACTION_FILES))
 
 all: 		$(NAME)
-bonus:		$(NAME_BONUS)
 
 m_libft:
 			@make -C $(LIBFT_DIR)
