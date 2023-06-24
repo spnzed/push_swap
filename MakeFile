@@ -1,0 +1,82 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    MakeFile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/24 21:36:56 by aaespino          #+#    #+#              #
+#    Updated: 2023/06/24 21:44:45 by aaespino         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = push_swap
+
+LIBFT_DIR = libft/
+LIBFT_FILE = libft.a
+LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
+AR = ar rc
+INCLUDE  = -I ./include/ -I ./libft/include/
+
+									SRCS									  
+SRCS_DIR = srcs/
+SRC_FILES =	 srcs/1. parsing/checking.c
+			srcs/1. parsing/parsing.c
+			srcs/2. algorithm/calculate_utils.c
+			srcs/2. algorithm/merge_utils.c
+			srcs/2. algorithm/move_utils.c
+			srcs/2. algorithm/rotation_utils.c
+			srcs/2. algorithm/sort_3.c
+			srcs/2. algorithm/sort_ev.c
+
+SRCS_ACTIONS_DIR = actions/
+SRC_ACTION_FILES = actions/swap.c 
+					actions/push.c 
+					actions/rotate.c 
+					actions/reverse_rotate.c
+
+									OBJS									  
+OBJS_DIR =	objs/
+OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJS = $(addprefix $(OBJS_DIR), $(OBJ_FILES))
+
+OBJS_ACTIONS_DIR = objs/actions/
+OBJ_ACTION_FILES = $(SRC_ACTION_FILES:.c=.o)
+OBJS_ACTIONS = $(addprefix $(OBJS_ACTIONS_DIR), $(OBJ_ACTION_FILES))
+
+all: 		$(NAME)
+bonus:		$(NAME_BONUS)
+
+m_libft:
+			@make -C $(LIBFT_DIR)
+
+$(NAME):	m_libft $(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS)
+			@$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) -Llibft/ -lft -o $@
+
+$(OBJS_DIR):
+						@mkdir $@
+$(OBJS_ACTIONS_DIR):
+						@mkdir $@
+
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+
+$(OBJS_ACTIONS_DIR)%.o:	$(SRCS_ACTIONS_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+
+clean: 		
+			make -C $(LIBFT_DIR) clean
+			@$(RM) $(OBJS)
+			@$(RM) $(OBJS_ACTIONS)
+
+fclean: 	clean
+			make -C $(LIBFT_DIR) fclean
+			@$(RM) $(NAME)
+
+re:			fclean all
+
+.PHONY: all clean fclean re bonus

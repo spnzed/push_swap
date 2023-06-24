@@ -6,11 +6,14 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 08:24:40 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 21:30:21 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:45:08 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "action_defs.h"
+#include "action_lst.h"
+
 
 void    parse_move(t_stack *stk, t_list *actions)
 {

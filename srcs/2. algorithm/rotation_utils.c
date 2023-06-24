@@ -6,12 +6,12 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 08:28:32 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 21:30:26 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:45:07 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include "action_defs.h"
 
 static void rotate_finish(t_stack *stk)
 {
