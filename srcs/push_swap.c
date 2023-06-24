@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 20:39:39 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/06/24 23:07:46 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void    push_swap(char **str)
     if (stk->stack_a)
         ft_lstclear(&stk->stack_a, (void *)ft_delete);
     free(stk);
-    return (0);
 }
 
 int main(int argc, char *argv[])

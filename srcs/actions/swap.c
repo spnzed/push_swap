@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 22:31:21 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/03 22:38:37 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/25 01:08:29 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "push_swap.h"
+# include "action_lst.h"
 
 static t_list   *swap(t_list *stack)
 {

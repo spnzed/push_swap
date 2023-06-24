@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:59:22 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/03 22:24:01 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/25 01:11:29 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "push_swap.h"
+# include "action_lst.h"
 
 void    reverse_rotate_a(t_stack *stk, int print)
 {
@@ -24,7 +22,7 @@ void    reverse_rotate_a(t_stack *stk, int print)
     {
         aux = stk->stack_a;
         lst = ft_lstlast(aux);
-        i = ft_lstsize;
+        i = ft_lstsize(aux);
         while (aux->next && i > 2)
         {
             aux = aux->next;
@@ -48,7 +46,7 @@ void    reverse_rotate_b(t_stack *stk, int print)
     {
         aux = stk->stack_b;
         lst = ft_lstlast(aux);
-        i = ft_lstsize;
+        i = ft_lstsize(aux);
         while (aux->next && i > 2)
         {
             aux = aux->next;

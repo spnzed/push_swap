@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 08:18:16 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/22 11:40:04 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/06/25 00:08:46 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static int *find_p(int n, t_list *lst, int phase)
         i = aux->content;
         if (!target)
         {
-            if (phase == 0 && *i < n || (phase == 1 && *i > n))
+            if ((phase == 0 && *i < n) || (phase == 1 && *i > n))
                 target = i;
         }
         else
         {
             if ((phase == 0 && *i < n && *i > *target)
-            || (phase == 1 && *i > n && *i < target))
+            || (phase == 1 && *i > n && *i < *target))
             target = i;
         }
         aux = aux->next;
@@ -41,12 +41,12 @@ static int *find_p(int n, t_list *lst, int phase)
 
 static t_list *get_cheapest(t_list *tmp_act, t_list *cheapest_act, int stack)
 {
-    if (ft_lst_size(tmp_act) > 1)
+    if (ft_lstsize(tmp_act) > 1)
         check_merge(&tmp_act);
     add_push(&tmp_act, stack);
     if (!cheapest_act)
         cheapest_act = tmp_act;
-    else if (ft_lstsize(cheapest_act) > ft_lst_size(tmp_act))
+    else if (ft_lstsize(cheapest_act) > ft_lstsize(tmp_act))
     {
         ft_lstclear(&cheapest_act, (void *)ft_delete);
         cheapest_act = tmp_act;

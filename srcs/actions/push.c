@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 22:14:01 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/03 22:14:26 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/25 01:08:24 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "push_swap.h"
+# include "action_lst.h"
 
 void    push_a(t_stack *stk, int print)
 {

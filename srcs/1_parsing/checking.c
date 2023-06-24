@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inp_check.c                                        :+:      :+:    :+:   */
+/*   checking.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:56:52 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/03 21:58:07 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/06/24 23:32:56 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,5 @@ int ft_atol(const char *str)
     }
     if (i > 0)
         j *= -1;
-    return (checklimits(j));
+    return (check_limits(j));
 }

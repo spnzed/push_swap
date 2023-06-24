@@ -7,7 +7,9 @@ SRC_LIBFT = 	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 				ft_memmove.c ft_memchr.c ft_memcmp.c ft_strdup.c ft_calloc.c \
 				ft_strncmp.c ft_strnstr.c ft_atoi.c ft_putchar_fd.c ft_putstr_fd.c \
 				ft_putendl_fd.c ft_putnbr_fd.c ft_substr.c ft_strjoin.c ft_strtrim.c \
-				ft_strmapi.c ft_striteri.c ft_itoa.c ft_split.c ft_strrncmp.c
+				ft_strmapi.c ft_striteri.c ft_itoa.c ft_split.c ft_strrncmp.c \
+				ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstlast.c ft_lstnew.c \
+				ft_lstpos.c ft_lstsize.c ft_delete.c\
 
 SRC_FTPRINTF_DIR = ft_printf/src/
 SRC_FTPRINTF =	ft_printf.c ft_printf_ch_str.c ft_printf_ptr_int.c ft_printf_uns_per.c \
