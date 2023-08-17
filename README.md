@@ -1,4 +1,34 @@
-# push_swap
+<h1 align=center>
+	<b>push_swap</b>
+	 
+  <i>42cursus' project #7</i>
+</h2>
+Algorithm project where we must sort a given list of random numbers with a limited set of instructions, using the lowest possible number of actions.
+  <h1 align=center>
+
+![push_swape](https://github.com/spnzed/push_swap/assets/95354392/3d82b7ca-544c-457f-b7ff-07e7da51f7d9)
+
+---
+
+<h3 align=center>
+Mandatory
+</h3>
+
+<b>Game actions:</b>
+> <i>The player can move in four directions but cannot move into walls. To exit the game, the player needs to collect something. The WASD keys are used to move the main character, and the game has a top-down 2D view. The movements are displayed in the shell, and pressing ESC must close the window and quit the program cleanly. </i>
+
+<b>Graphics actions:</b>
+> <i>The program should display the image within a window, and window management should be smooth, such as switching to another window or minimizing. Pressing the [ESC] key should close the window and quit the program cleanly. The usage of MiniLibX images is mandatory.</i>
+
+<b>Map actions:</b>
+> <i>The map must be rectangular/square in shape, surrounded by walls with a clear path to the exit. It should be able to parse any type of map as long as it follows the aforementioned rules and contains three components - the exit, player start position, and collectibles. Additionally, if there is a misconfiguration in the map, the program should return an error message to indicate the issue.</i>
+
+<h3 align=center>
+
+
+<h2>
+The Project
+</h2>
 
 𝟏. 𝐏𝐀𝐑𝐒𝐈𝐍𝐆 :
 Join inputs (Check zeros, digits) -> Convert to t_list (atol) -> Check_duplicates
