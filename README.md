@@ -14,14 +14,8 @@ Algorithm project where we must sort a given list of random numbers with a limit
 Mandatory
 </h3>
 
-<b>Game actions:</b>
-> <i>The player can move in four directions but cannot move into walls. To exit the game, the player needs to collect something. The WASD keys are used to move the main character, and the game has a top-down 2D view. The movements are displayed in the shell, and pressing ESC must close the window and quit the program cleanly. </i>
-
-<b>Graphics actions:</b>
-> <i>The program should display the image within a window, and window management should be smooth, such as switching to another window or minimizing. Pressing the [ESC] key should close the window and quit the program cleanly. The usage of MiniLibX images is mandatory.</i>
-
-<b>Map actions:</b>
-> <i>The map must be rectangular/square in shape, surrounded by walls with a clear path to the exit. It should be able to parse any type of map as long as it follows the aforementioned rules and contains three components - the exit, player start position, and collectibles. Additionally, if there is a misconfiguration in the map, the program should return an error message to indicate the issue.</i>
+<b>XXXXX</b>
+> <i>XXXXXXXXXXXXXXXXXXXX</i>
 
 <h3 align=center>
 
