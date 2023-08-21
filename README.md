@@ -11,6 +11,28 @@ Algorithm project where we must sort a given list of random numbers with a limit
 
 ![push_swape](https://github.com/spnzed/push_swap/assets/95354392/3d82b7ca-544c-457f-b7ff-07e7da51f7d9)
 
+<h3 align=center>
+To-Do
+</h3>
+
+1 Entender que es un stack
+2 Entender y crear funciones libft
+3 Parsear input como argumento que entra como diferentes ints
+    3.1 Comprobar que todo sean numeros
+    3.2 Comprobar que no haya numeros mayores a int
+        Recomendable crear una funcion "ATOL" como atoi pero diferente, tengo una en mi push_swap en check_input.c
+    3.3 Comprobar que no haya duplicados
+    3.4 Pasar los elementos de int a t_list
+        Recuerda que [+0003 3]... [+0 -0 0] son lo mismo
+4 Programar acciones de push_swap... SwapA SwapB
+5 Sort de 3 numeros
+        Super recomendable que cojas papel  y boli y te apuntes todos los casos diferentes del sort de 3 y lo resuelvas tu para luego aplicarlo. Intenta siempre priorizar que el numero maximo quede abajo.
+6 Aplicar algoritmo
+   6.1 Pasar las cosas a stack_B
+   6.2 Pasar las cosas a stack_A
+   6.3 "Merge actions" o sea, cuando haya [ra rb] convertirlo en [rr]
+        Super recomendable utilizar un push_swap visualizer para ver que esta haciendo tu codigo exactamente y encontrar errores
+
 ---
 
 <h3 align=center>
