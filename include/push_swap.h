@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/25 01:10:36 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:57:24 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int				check_digits(char *str);
 int				check_duplicates(t_list *stack);
 int				ft_atol(const char *str);
 char			*check_zeros(char *input);
+void 			error_message(char num);
+
 
 void			swap_a(t_stack *stk, int print);
 void			swap_b(t_stack *stk, int print);
