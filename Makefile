@@ -16,6 +16,7 @@ SRC_ACTION_FILES = swap.c \
 SRCS_PARSING_DIR = srcs/1_parsing/
 SRC_PARSING_FILES = checking.c \
 					parsing.c \
+					error_managing.c \
 
 SRCS_ALGORITHM_DIR = srcs/2_algorithm/
 SRC_ALGORITHM_FILES = calculate_utils.c \
