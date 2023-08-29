@@ -23,7 +23,7 @@ To-Do
 	- ✅3.3 Comprobar que no haya duplicados (duplicates)
 	- ✅3.4 Pasar los elementos de int a t_list (Recuerda que [+0003 3]... [+0 -0 0] son lo mismo) (convert_to_tlist)
 - ✅4 Programar acciones de push_swap... SwapA SwapB
-- 5 Sort de 3 numeros (Super recomendable que cojas papel  y boli y te apuntes todos los casos diferentes del sort de 3 y lo resuelvas tu para luego aplicarlo. Intenta siempre priorizar que el numero maximo quede abajo.)
+- ✅5 Sort de 3 numeros (Super recomendable que cojas papel  y boli y te apuntes todos los casos diferentes del sort de 3 y lo resuelvas tu para luego aplicarlo. Intenta siempre priorizar que el numero maximo quede abajo.)
 - 6 Aplicar algoritmo
 	- 6.1 Pasar las cosas a stack_B
 	- 6.2 Pasar las cosas a stack_A
