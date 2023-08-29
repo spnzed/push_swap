@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:37:39 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/08/29 15:54:38 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/08/29 18:02:49 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ static t_list *convert_to_tlist(char **input)
             while (input[i])
                 free(input[i++]);
             ft_lstclear(&stack, (void *)ft_delete);
-            ft_putstr_fd("Error, not valid digit\n", 2);
+            error_message('1');
             exit (1);
         }
+        free(input[i]);
         i++;
     }
     return (stack);
@@ -67,14 +68,19 @@ static t_list *convert_to_tlist(char **input)
 
 t_list *parsing_i(char **str)
 {
-    char    **out;
     char    *input;
+    char    **out;
     t_list  *stack;
 
     input = join_input(str);
+    if (!input)
+	{
+		error_message('4');
+		return (NULL);
+	}
     if (check_digits(input) < 1)
     {
-        ft_putstr_fd("Error, input is not a digit\n", 2);
+        error_message('2');
         free(input);
         return (NULL);
     }
@@ -86,7 +92,7 @@ t_list *parsing_i(char **str)
     free(out);
     if (check_duplicates(stack) < 1)
     {
-        ft_putstr_fd("Error, duplicated digits\n", 2);
+        error_message('3');
         ft_lstclear(&stack, (void *)ft_delete);
         return (NULL);
     }
