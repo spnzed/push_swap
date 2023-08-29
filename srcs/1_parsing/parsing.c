@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inp_parse.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:37:39 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/04 10:27:40 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/08/29 15:54:38 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,20 @@ static char *join_input(char **input)
     char    *aux;
     int     i;
 
-    i = 2;
+    i = 1;
     out = malloc(sizeof(char *) * (ft_strlen(input[1] + 1)));
     ft_strlcpy(out, input[1], ft_strlen(input[1] + 1));
     while (input[i])
     {
         aux = out;
         input[i] = check_zeros(input[i]);
-        out = ft_strjoin(out, input[i]);
+        out = ft_strjoin(out, " ");
         free(aux);
         aux = out;
         out = ft_strjoin(out, input[i]);
         free(aux);
         aux = out;
+
         i++;
     }
     return (out);
@@ -56,9 +57,10 @@ static t_list *convert_to_tlist(char **input)
             while (input[i])
                 free(input[i++]);
             ft_lstclear(&stack, (void *)ft_delete);
-            ft_putstr_fd("Error\n", 2);
+            ft_putstr_fd("Error, not valid digit\n", 2);
             exit (1);
         }
+        i++;
     }
     return (stack);
 }
@@ -72,7 +74,7 @@ t_list *parsing_i(char **str)
     input = join_input(str);
     if (check_digits(input) < 1)
     {
-        ft_putstr_fd("Error\n", 2);
+        ft_putstr_fd("Error, input is not a digit\n", 2);
         free(input);
         return (NULL);
     }
@@ -84,7 +86,7 @@ t_list *parsing_i(char **str)
     free(out);
     if (check_duplicates(stack) < 1)
     {
-        ft_putstr_fd("Error\n", 2);
+        ft_putstr_fd("Error, duplicated digits\n", 2);
         ft_lstclear(&stack, (void *)ft_delete);
         return (NULL);
     }

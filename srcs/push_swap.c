@@ -6,12 +6,13 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 23:07:46 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:55:05 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void    push_swap(char **str)
 {
@@ -37,7 +38,7 @@ void    push_swap(char **str)
 
 int main(int argc, char *argv[])
 {
-    if (*argv[1] == '\0')
+    if (argv[1] == 0)
     {
         ft_putstr_fd("Error\n", 2);
         return (0);
