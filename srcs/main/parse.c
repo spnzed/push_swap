@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 11:37:39 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/08/29 18:02:49 by aaespino         ###   ########.fr       */
+/*   Created: 2023/09/29 16:44:35 by aaespino          #+#    #+#             */
+/*   Updated: 2023/09/29 18:11:24 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static t_list *convert_to_tlist(char **input)
     return (stack);
 }
 
-t_list *parsing_i(char **str)
+t_list *parsing_input(char **str)
 {
     char    *input;
     char    **out;

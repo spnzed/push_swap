@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/08/29 17:57:24 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:01:35 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,24 @@ typedef struct lst_stack
 }	t_stack;
 
 void			push_swap(char **str);
+void 			error_message(char num);
 
-t_list 			*parsing_i(char **str);
+t_list 			*parsing_input(char **str);
+//util_parsing
 int				check_digits(char *str);
 int				check_duplicates(t_list *stack);
 int				ft_atol(const char *str);
 char			*check_zeros(char *input);
 void 			error_message(char num);
 
-
-void			swap_a(t_stack *stk, int print);
-void			swap_b(t_stack *stk, int print);
-void			swap_s(t_stack *stk, int print);
-
-void			push_a(t_stack *stk, int print);
-void			push_b(t_stack *stk, int print);
-
-void			rotate_a(t_stack *stk, int print);
-void			rotate_b(t_stack *stk, int print);
-void			rotate_r(t_stack *stk, int print);
-
-void			reverse_rotate_a(t_stack *stk, int print);
-void			reverse_rotate_b(t_stack *stk, int print);
-void			reverse_rotate_r(t_stack *stk, int print);
-
+//sorts
 void			sort_3(t_stack *stk);
-void			init_sort(t_stack *stk);
+void			sort_algorithm(t_stack *stk);
 
+//sort_3
+int				last_check(t_stack *stk);
+
+//sort_algorithm
 int				*stk_limits(t_list *lst);
 t_list			*calculate_moves(t_stack *stk, int *limits, int id);
 void			*calc_rot(t_list *lst, int *value, int stack, t_list **action);
@@ -57,7 +48,6 @@ void			check_merge(t_list **lst);
 void			add_push(t_list **action, int stack);
 
 void			parse_move(t_stack *stk, t_list *actions);
-int				finish_check(t_stack *stk);
 
 
 

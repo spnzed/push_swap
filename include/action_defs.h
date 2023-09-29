@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_defs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 08:27:01 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/13 08:27:18 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/09/29 16:04:48 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,20 @@
 # define SWAP_S 'I'
 # define ROTATE_R 'J'
 # define REV_ROTATE_R 'K'
+
+void			swap_a(t_stack *stk, int print);
+void			swap_b(t_stack *stk, int print);
+void			swap_s(t_stack *stk, int print);
+
+void			push_a(t_stack *stk, int print);
+void			push_b(t_stack *stk, int print);
+
+void			rotate_a(t_stack *stk, int print);
+void			rotate_b(t_stack *stk, int print);
+void			rotate_r(t_stack *stk, int print);
+
+void			reverse_rotate_a(t_stack *stk, int print);
+void			reverse_rotate_b(t_stack *stk, int print);
+void			reverse_rotate_r(t_stack *stk, int print);
+
 #endif

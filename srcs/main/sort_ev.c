@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 08:54:53 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/25 00:09:57 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:43:26 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void rotate_finish(t_stack *stk)
     aux = stk->stack_a;
     limits = stk_limits(aux);
     size = ft_lstsize(stk->stack_a) / 2;
-    while (finish_check(stk) < 1)
+    while (!finish_check(stk))
     {
         if (ft_lstpos(stk->stack_a, &limits[0]) < size)
             rotate_a(stk, 1);
@@ -58,9 +58,9 @@ static void move(t_stack *stk)
     rotate_finish(stk);
 }
 
-void    init_sort(t_stack *stk)
+void    sort_algorithm(t_stack *stk)
 {
-    if (finish_check(stk) < 1)
+    if (!last_check(stk))
     {
         push_b(stk, 1);
         if (ft_lstsize(stk->stack_a) > 3)

@@ -1,17 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checking.c                                         :+:      :+:    :+:   */
+/*   utils_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 11:56:52 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 23:32:56 by aaespino         ###   ########.fr       */
+/*   Created: 2023/09/29 16:33:35 by aaespino          #+#    #+#             */
+/*   Updated: 2023/09/29 17:00:01 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 #include <limits.h>
+
+int last_check(t_stack *stk)
+{
+    int *max;
+    int *min;
+    int *n;
+    t_list  *lst;
+
+    lst = stk->stack_a;
+    max = lst->content;
+    min = lst->content;
+    while (lst->next)
+    {
+        n = lst->next->content;
+        if (*n > *max && *n > *min)
+        {
+            max = lst->next->content;
+            lst = lst->next;
+        }
+        else
+            return (0);
+    }
+    return (1);
+}
 
 char    *check_zeros(char *input)
 {
@@ -89,32 +114,4 @@ static int	check_limits(long j)
 		i = (int)j;
 		return (i);
 	}
-}
-
-int ft_atol(const char *str)
-{
-    int     i;
-    long    j;
-
-    i = 0;
-    j = 0;
-    while (*str == ' ' || *str == '\t' || *str == '\n'
-        || *str == '\v' || *str == '\f' || *str == '\r')
-            str++;
-    while (*str == '-' || *str == '+')
-    {
-        if (*str == '-')
-            i++;
-        if (*(str + 1) == '+' || *(str + 1) == '-')
-            return (0);
-        str++;
-    }
-    while (ft_isdigit(*str))
-    {
-        j = (j * 10) + (*str - '0');
-        str++;
-    }
-    if (i > 0)
-        j *= -1;
-    return (check_limits(j));
 }

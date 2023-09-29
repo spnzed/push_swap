@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotation_utils.c                                   :+:      :+:    :+:   */
+/*   utils_rotation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 08:28:32 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/06/24 23:37:27 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:00:55 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,32 @@ void    add_push(t_list **action, int stack)
     if (stack < 1)
         n = PUSH_B;
     fill_list(action, 1, &n);
+}
+
+int ft_atol(const char *str)
+{
+    int     i;
+    long    j;
+
+    i = 0;
+    j = 0;
+    while (*str == ' ' || *str == '\t' || *str == '\n'
+        || *str == '\v' || *str == '\f' || *str == '\r')
+            str++;
+    while (*str == '-' || *str == '+')
+    {
+        if (*str == '-')
+            i++;
+        if (*(str + 1) == '+' || *(str + 1) == '-')
+            return (0);
+        str++;
+    }
+    while (ft_isdigit(*str))
+    {
+        j = (j * 10) + (*str - '0');
+        str++;
+    }
+    if (i > 0)
+        j *= -1;
+    return (check_limits(j));
 }
