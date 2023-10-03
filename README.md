@@ -12,6 +12,15 @@ Algorithm project where we must sort a given list of random numbers with a limit
 ![push_swape](https://github.com/spnzed/push_swap/assets/95354392/3d82b7ca-544c-457f-b7ff-07e7da51f7d9)
 
 <h3 align=center>
+The Approach
+</h3>
+
+![IMG_2846](https://github.com/spnzed/push_swap/assets/95354392/00d93342-7988-48f0-acef-651ed72cf489)
+
+![IMG_2847](https://github.com/spnzed/push_swap/assets/95354392/d04a84e0-cdd6-4e7b-bb12-e3a32522d558)
+
+---
+<h3 align=center>
 To-Do
 </h3>
 
