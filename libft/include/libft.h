@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:17:11 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/02 14:01:57 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:29:24 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <string.h>
 # include <unistd.h>
 
@@ -21,7 +22,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}	t_list;
+}				t_list;
 
 int		ft_isalnum(int i);
 int		ft_isalpha(int i);
@@ -57,7 +58,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
-int		ft_strrncmp(const char *str, const char *str2, size_t n);
 
 t_list  *ft_lstnew(void *content);
 void    ft_lstadd_front(t_list **lst, t_list *new);
@@ -67,9 +67,9 @@ void    ft_lstadd_back(t_list **lst, t_list *new);
 void    ft_lstdelone(t_list *lst, void (*del)(void *));
 void    ft_lstclear(t_list **lst, void(*del)(void *));
 void    ft_lstiter(t_list **lst, void(*f)(void *));
-t_list	ft_lstmap(t_list *lst, void(*f)(void *), void(*del)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int		ft_lstpos(t_list *lst, int *value);
-void    *ft_delete(void *p);
+void    *ft_cleanp(void *p);
 
 #endif
