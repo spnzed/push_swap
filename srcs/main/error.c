@@ -13,6 +13,16 @@
 # include "libft.h"
 # include "push_swap.h"
 
+//ft_free_stack hara lo siguiente
+//	Crear dos nodos (current y tmp)
+//	Comprobar si stack existe
+//	En current meteremos stack
+//	Recorremos stack
+//		En tmp meteremos el next de current
+//		Liberamos current
+//		igualamos current a tmp
+//	Asi cuando no haya next tmp tampoco se hara posible y cuando igualemos current saldremos del bucle
+//	Para terminar igualamos el stack a NULO
 void ft_free_stack(t_node **stack)
 {
 	t_node *current;
@@ -30,12 +40,20 @@ void ft_free_stack(t_node **stack)
 	*stack = NULL;
 }
 
+//ft_error_free hara lo siguiente
+//	usar free_stack
 void ft_error_free(t_node **stack, char **argv)
 {
 	free_stack(stack);
 	exit (1);
 }
 
+//ft_error_syntax hara lo siguiente
+//	Comprobar string y comprobar que no ocurra lo siguiente
+//		Que el char no sea un numero o un simbolo - +
+//		Que el primer char sea + - pero el siguiente no sea un numero
+//	Recorrer la string y comprobar que no haya que no sea un numero
+//	Si pasa algo asi usaremos error con el error correspondiente
 int ft_error_syntax(char *num)
 {
 	int i;
@@ -56,6 +74,11 @@ int ft_error_syntax(char *num)
 	return (0);
 }
 
+//ft_error_duplicate debera hacer lo siguiente
+//	Comprobar que node exista
+//	Recorrer node 
+//		Si encuentras el num en el nodo
+//			retornas error con el mensaje que toque
 int ft_error_duplicate(t_node *node, int num)
 {
 	if (!node)
