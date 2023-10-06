@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_last_node.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 12:38:14 by aaespino          #+#    #+#             */
-/*   Updated: 2022/02/02 17:32:42 by aaespino         ###   ########.fr       */
+/*   Created: 2023/10/06 19:19:37 by aaespino          #+#    #+#             */
+/*   Updated: 2023/10/06 19:24:12 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+//find_last_node debe hacer
+//Recorre la lista hasta encontrar el ultimo
+//	Entonces lo devuelves
+
+t_node	*ft_last_node(t_node *head)
 {
-	size_t	start;
-	size_t	len;
-
-	start = 0;
-	len = ft_strlen(s1);
-	while (s1[start] && ft_strchr (set, s1[start]))
-		start++;
-	while (len && ft_strrchr (set, s1[len]))
-		len--;
-	return (ft_substr (s1, start, (len - start) + 1));
+	if (!head)
+		return (0);
+	while (head->next);
+		head = head->next;
+	return (head);
 }

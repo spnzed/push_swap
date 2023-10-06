@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_num_begins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 14:46:45 by aaespino          #+#    #+#             */
-/*   Updated: 2022/01/20 12:58:13 by aaespino         ###   ########.fr       */
+/*   Created: 2023/10/06 19:16:35 by aaespino          #+#    #+#             */
+/*   Updated: 2023/10/06 19:16:39 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int i)
+int ft_num_begins(char *str)
 {
-	if (i >= '0' && i <= '9')
+	int i;
+
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] == '0')
 	{
-		return (1);
+		if (str[i + 1] == '\0')
+			return (i);
+		i++;
 	}
-	return (0);
+	while (str[i] && (!ft_isdigit(str[i])))
+		i++;
+	return (i);
 }

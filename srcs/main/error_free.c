@@ -6,39 +6,17 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/05 17:15:09 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:20:31 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
 # include "push_swap.h"
 
-//ft_free_stack hara lo siguiente
-//	Crear dos nodos (current y tmp)
-//	Comprobar si stack existe
-//	En current meteremos stack
-//	Recorremos stack
-//		En tmp meteremos el next de current
-//		Liberamos current
-//		igualamos current a tmp
-//	Asi cuando no haya next tmp tampoco se hara posible y cuando igualemos current saldremos del bucle
-//	Para terminar igualamos el stack a NULO
-void ft_free_stack(t_node **stack)
-{
-	t_node *current;
-	t_node *tmp;
-	
-	if (!stack)
-		return (0);
-	current = *stack;
-	while (current)
-	{
-		tmp = current->next;
-		free(current);
-		current = tmp;
-	}
-	*stack = NULL;
-}
+//Index
+//	~Free Stacks
+//	~Check Syntax Error
+//	~Check Duplicate Node
+//	~Check MAX Int
 
 //ft_error_free hara lo siguiente
 //	usar free_stack
@@ -61,16 +39,44 @@ int ft_error_syntax(char *num)
 	i = 0;
 	if (!(num[0] == '+' || num[0] == '-' ||
 		(num[0] >= '0' && num[0] <= '9')))
-		return (error_message('1'));
+		return (ft_error_message('1'));
 	if ((num[0] == '+' || num[0] == '-') &&
 		!(num[1] >= '0' && num[1] <= '9'))
-		return (error_message('1'));
+		return (ft_error_message('2'));
 	while (num[i])
 	{
 		if (!(num[i] >= '0' && num[i] <= '9'))
-			return (error_message('1'));
+			return (ft_error_message('2'));
 		i++;
 	}
+	return (0);
+}
+
+//ft_error_max hara lo siguiente
+//	Comprobar que en la strings solo hayan numeros
+//	Calculamos los digitos del numero
+//	Si son mas de los de LONG_MAX error
+//	Metemos el numero con atol
+//		Comprobamos que este dentro de los maximos de INT
+int ft_error_max(char *str)
+{
+	long nbr;
+	int	digits;
+	int i;
+
+	i = ft_num_begins(*str);
+	digits = ft_strlen(str + i);
+	if (digits > 18)
+	{	
+		if (str[0] == '-')
+			return(ft_error_message('4'));
+		return(ft_error_message('5'));
+	}
+	nbr = ft_atol(str); 
+	if (nbr > INT_MAX)
+		return(ft_error_message('4'));
+	else if (nbr < INT_MIN)
+		return(ft_error_message('5'));
 	return (0);
 }
 
@@ -85,8 +91,8 @@ int ft_error_duplicate(t_node *node, int num)
 		return(0);
 	while(node)
 	{
-		if (node->value = num)
-			return (error_message('2'));
+		if (node->value == num)
+			return (ft_error_message('2'));
 		node = node->next;
 	}
 	return (0);

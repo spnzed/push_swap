@@ -6,57 +6,15 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:16:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/05 19:34:08 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:27:31 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Create Stack
-//Checks
-//	~Duplicates
-//	~Oveflow/Underflow
-//	~Syntax Error
+//Index
+//	~Joins nodes with nbrs
+//	~Genera el Stack
 
 #include "push_swap.h"
-//atol chill
-static long	ft_atol(const char *str)
-{
-	long	res;
-	int		sign;
-	int		i;
-
-	res = 0;
-	sign = 1;
-	i = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\t'
-			|| str[i] == '\n' || str[i] == '\r'
-			|| str[i] == '\v' || str[i] == '\f'))
-		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (res * 10) + (str[i] - '0');
-		i++;
-	}
-	return (res * sign);
-}
-
-//find_last_node debe hacer
-//Recorre la lista hasta encontrar el ultimo
-//	Entonces lo devuelves
-t_node	*find_last_node(t_node *head)
-{
-	if (!head)
-		return (0);
-	while (head->next);
-		head = head->next;
-	return (head);
-}
 
 //merge_nodes hace
 //	inicia node y last_node
@@ -91,7 +49,7 @@ void	merge_nodes(t_node **stack, int nbr)
 	{
 		last_node = find_last_node(*stack);
 		last_node->next = node;
-		last_node->prev = last_node;
+		node->prev = last_node;
 	}
 }
 
@@ -112,12 +70,12 @@ void	gen_stack(t_node **stack, char **nums)
 	{
 		if (ft_error_syntax(nums[i]))
 			error_free(stack, nums);
-		nbr = ft_atol(nums[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
+		if (ft_error_max(nums[i]))
 			ft_error_free(stack, nums);
-		if (ft_error_duplicate(*stack, (int)nbr))
+		nbr = ft_atoi(nums[i]);
+		if (ft_error_duplicate(*stack, nbr))
 			ft_error_free(stack, nums);
-		merge_nodes(*stack, (int)nbr);
+		merge_nodes(*stack, nbr);
 		i++;
 	}
 }

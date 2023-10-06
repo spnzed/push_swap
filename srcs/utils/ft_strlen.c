@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cleanp.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 14:29:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/04 14:30:31 by aaespino         ###   ########.fr       */
+/*   Created: 2022/01/12 21:07:40 by aaespino          #+#    #+#             */
+/*   Updated: 2023/10/06 18:05:15 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "push_swap.h"
 
-void    *ft_cleanp(void *p)
+size_t	ft_strlen(const char *str)
 {
-	free(p);
-	p = NULL;
-	return (p);
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
