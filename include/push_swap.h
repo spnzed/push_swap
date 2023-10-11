@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/06 19:27:00 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:05:24 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ typedef struct s_node
 	void 		ft_free_stack(t_node **stack);
 	t_node		*ft_last_node(t_node *head);
 	int 		ft_num_begins(char *str);
+	void		ft_lstadd_flinked(t_node **lst, t_node *new);
+	int			ft_lst_size(t_node *node);
+	t_node 		*ft_lst_last(t_node *node);
+
 
 #endif

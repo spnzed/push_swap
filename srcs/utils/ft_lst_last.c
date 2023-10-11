@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_last_node.c                                     :+:      :+:    :+:   */
+/*   ft_lst_last.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 19:19:37 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/06 19:24:12 by aaespino         ###   ########.fr       */
+/*   Created: 2023/10/11 17:05:56 by aaespino          #+#    #+#             */
+/*   Updated: 2023/10/11 18:03:46 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//find_last_node debe hacer
-//Recorre la lista hasta encontrar el ultimo
-//	Entonces lo devuelves
-
-t_node	*ft_last_node(t_node *head)
+t_node *ft_lst_last(t_node *node)
 {
-	if (!head)
-		return (0);
-	while (head->next);
-		head = head->next;
-	return (head);
+	if (!node)
+		return (NULL);
+	while (node->next)
+		node = node->next;
+	return (node);
 }
