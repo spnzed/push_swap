@@ -1,69 +1,94 @@
-#  |  |  ___ \    \  |         |
-#  |  |     ) |  |\/ |   _  |  |  /   _ 
-# ___ __|  __/   |   |  (   |    <    __/ 
-#    _|  _____| _|  _| \__,_| _|\_\ \___|
-#                              by jcluzet
-################################################################################
-#                                     CONFIG                                   #
-################################################################################
+NAME = push_swap
 
-NAME        := a.out
-CC        := gcc
-FLAGS    := -Wall -Wextra -Werror 
-################################################################################
-#                                 PROGRAM'S SRCS                               #
-################################################################################
+LIBFT_DIR = libft/
+LIBFT_FILE = libft.a
+LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
+SRCS_DIR = srcs/
+SRC_FILES =	push_swap.c \
 
-SRCS        :=      srcs/actions/action_lst.c \
-                          srcs/main/error_free.c \
-                          srcs/main/gen_stack.c \
-                          srcs/push_swap.c \
-                          srcs/utils/ft_atoi.c \
-                          srcs/utils/ft_atol.c \
-                          srcs/utils/ft_error_message.c \
-                          srcs/utils/ft_free_stack.c \
-                          srcs/utils/ft_last_node.c \
-                          srcs/utils/ft_num_begins.c \
-                          srcs/utils/ft_split.c \
-                          srcs/utils/ft_strlen.c \
-                          
-OBJS        := $(SRCS:.c=.o)
+SRCS_ACTIONS_DIR = actions/
+SRC_ACTION_FILES = swap.c \
+					push.c \
+					rotate.c \
+					reverse_rotate.c \
+					action_lst.c \
 
-.c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+SRCS_PARSING_DIR = srcs/1_parsing/
+SRC_PARSING_FILES = checking.c \
+					parsing.c \
+					error_managing.c \
 
-################################################################################
-#                                  Makefile  objs                              #
-################################################################################
+SRCS_ALGORITHM_DIR = srcs/2_algorithm/
+SRC_ALGORITHM_FILES = calculate_utils.c \
+					merge_utils.c \
+					move_utils.c \
+					rotation_utils.c \
+					sort_3.c \
+					sort_ev.c \
 
+							  
+OBJS_DIR =	objs/
+OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJS = $(addprefix $(OBJS_DIR), $(OBJ_FILES))
 
-CLR_RMV		:= \033[0m
-RED		    := \033[1;31m
-GREEN		:= \033[1;32m
-YELLOW		:= \033[1;33m
-BLUE		:= \033[1;34m
-CYAN 		:= \033[1;36m
-RM		    := rm -f
+OBJS_ACTIONS_DIR = objs/actions/
+OBJ_ACTION_FILES = $(SRC_ACTION_FILES:.c=.o)
+OBJS_ACTIONS = $(addprefix $(OBJS_ACTIONS_DIR), $(OBJ_ACTION_FILES))
 
-${NAME}:	${OBJS}
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
-			@echo "$(GREEN)$(NAME) created[0m ✔️"
+OBJS_PARSING_DIR = objs/parsing/
+OBJ_PARSING_FILES = $(SRC_PARSING_FILES:.c=.o)
+OBJS_PARSING = $(addprefix $(OBJS_PARSING_DIR), $(OBJ_PARSING_FILES))
 
-all:		${NAME}
+OBJS_ALGORITHM_DIR = objs/algorithm/
+OBJ_ALGORITHM_FILES = $(SRC_ALGORITHM_FILES:.c=.o)
+OBJS_ALGORITHM = $(addprefix $(OBJS_ALGORITHM_DIR), $(OBJ_ALGORITHM_FILES))
 
-bonus:		all
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
+AR = ar rc
+INCLUDE  = -I ./include/ -I ./libft/include/
 
-clean:
-			@ ${RM} *.o */*.o */*/*.o
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
+all: 		$(NAME)
 
-fclean:		clean
-			@ ${RM} ${NAME}
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
+m_libft:
+			@make -C $(LIBFT_DIR)
+
+clean: 		
+			make -C $(LIBFT_DIR) clean
+			@$(RM) $(OBJS)
+			@$(RM) $(OBJS_ACTIONS)
+
+fclean: 	clean
+			make -C $(LIBFT_DIR) fclean
+			@$(RM) $(NAME)
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+$(NAME):	m_libft $(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(OBJS_PARSING_DIR) $(OBJS_PARSING) $(OBJS_ALGORITHM_DIR) $(OBJS_ALGORITHM) 
+			@$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) $(OBJS_PARSING) $(OBJS_ALGORITHM) -Llibft/ -lft -o $@
+
+$(OBJS_DIR):
+						@mkdir $@
+$(OBJS_ACTIONS_DIR):
+						@mkdir $@
+$(OBJS_PARSING_DIR):
+						@mkdir $@
+$(OBJS_ALGORITHM_DIR):
+						@mkdir $@
+
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+
+$(OBJS_ACTIONS_DIR)%.o:	$(SRCS_ACTIONS_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+
+$(OBJS_PARSING_DIR)%.o:	$(SRCS_PARSING_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+
+$(OBJS_ALGORITHM_DIR)%.o:	$(SRCS_ALGORITHM_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
 
+
+.PHONY: all clean fclean re bonus
