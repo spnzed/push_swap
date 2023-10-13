@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:16:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/11 16:45:29 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:46:51 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,30 @@
 //		el ultimo nodo sera last_node del stack
 //		el siguiente sera node
 //		el previo sera last_node
-void	merge_nodes(t_node **stack, int nbr)
+int	merge_nodes(t_node **stack, int nbr)
 {
 	t_node	*node;
 	t_node	*last_node;
 	
 	if (!stack)
-		return (0);
+		exit (1);
 	node = malloc(sizeof(t_node));
 	if (!node)
-		return (0);
+		return (1);
 	node->next = NULL;
 	node->value = nbr;
-	if (!*stack)
+	if (!stack)
 	{
-		*stack = node;
+		stack = &node;
 		node->prev = NULL;
 	}
 	else
 	{
-		last_node = find_last_node(*stack);
+		last_node = ft_lst_last(*stack);
 		last_node->next = node;
 		node->prev = last_node;
 	}
+	return (0);
 }
 
 //gen_stack debe hacer
@@ -60,7 +61,7 @@ void	merge_nodes(t_node **stack, int nbr)
 //		Comprobar limites de int
 // 		Comprobar duplicados
 // 	Merge_Nodes
-void	gen_stack(t_node **stack, char **nums)
+void	gen_stack(t_node **stack, char **nums, int flag_argc)
 {
 	long	nbr;
 	int		i;
@@ -69,13 +70,15 @@ void	gen_stack(t_node **stack, char **nums)
 	while (nums[i])
 	{
 		if (ft_error_syntax(nums[i]))
-			error_free(stack, nums);
+			ft_error_free(stack, nums, flag_argc);
 		if (ft_error_max(nums[i]))
-			ft_error_free(stack, nums);
+			ft_error_free(stack, nums, flag_argc);
 		nbr = ft_atoi(nums[i]);
 		if (ft_error_duplicate(*stack, nbr))
-			ft_error_free(stack, nums);
-		merge_nodes(*stack, nbr);
+			ft_error_free(stack, nums, flag_argc);
+		merge_nodes(stack, nbr);
 		i++;
 	}
+	if (flag_argc == 2)
+		ft_free_argv(nums);
 }

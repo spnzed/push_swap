@@ -6,11 +6,11 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:30:06 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/06 17:18:13 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 19:21:31 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "push_swap.h"
 
 int	count_w(const char *s, char c)
 {

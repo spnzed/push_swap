@@ -6,9 +6,11 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:16:35 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/06 19:16:39 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:43:58 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int ft_num_begins(char *str)
 {

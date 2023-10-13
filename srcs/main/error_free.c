@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/06 19:20:31 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:27:14 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@
 
 //ft_error_free hara lo siguiente
 //	usar free_stack
-void ft_error_free(t_node **stack, char **argv)
+void ft_error_free(t_node **stack, char **argv, int flag_argc)
 {
-	free_stack(stack);
+	argv = 0;
+	ft_free_stack(stack);
+	if (flag_argc == 2)
+		ft_free_argv(argv);
+	ft_error_message ('0');
 	exit (1);
 }
 
@@ -64,7 +68,7 @@ int ft_error_max(char *str)
 	int	digits;
 	int i;
 
-	i = ft_num_begins(*str);
+	i = ft_num_begins(str);
 	digits = ft_strlen(str + i);
 	if (digits > 18)
 	{	

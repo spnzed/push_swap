@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:37 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/11 17:55:25 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:04:30 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	reverse_rotate(t_node **head)
 	t_node	*aux;
 	int		i;
 
-	if (ft_lst_size(head) > 1)
+	if (ft_lst_size(*head) > 1)
 	{
-		aux = head;
-		f = ft_lst_last(head);
+		aux = *head;
+		f = ft_lst_last(*head);
 		i = ft_lst_size(aux);
 		while (aux->next && i > 2)
 		{
@@ -29,8 +29,8 @@ static void	reverse_rotate(t_node **head)
 			i--;
 		}
 		aux->next = NULL;
-		f->next = head;
-		head = f;
+		f->next = *head;
+		head = &f;
 	}
 }
 

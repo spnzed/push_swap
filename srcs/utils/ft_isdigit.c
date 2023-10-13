@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_flinked.c                                :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 18:55:04 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/13 18:42:24 by aaespino         ###   ########.fr       */
+/*   Created: 2022/01/10 14:46:45 by aaespino          #+#    #+#             */
+/*   Updated: 2023/10/13 18:43:09 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	ft_lstadd_flinked(t_node **lst, t_node *new)
+int	ft_isdigit(int i)
 {
-	t_node	*aux;
-
-	if (!*lst)
-		*lst = new;
-	else
+	if (i >= '0' && i <= '9')
 	{
-		aux = new;
-		aux->next = *lst;
-		aux->prev = NULL;
-		*lst = aux;
+		return (1);
 	}
+	return (0);
 }

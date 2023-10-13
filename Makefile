@@ -1,34 +1,42 @@
 NAME = push_swap
 
-LIBFT_DIR = libft/
-LIBFT_FILE = libft.a
-LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
 SRCS_DIR = srcs/
 SRC_FILES =	push_swap.c \
 
-SRCS_ACTIONS_DIR = 		actions/
+SRCS_LIB_DIR =			include/
+SRC_LIB_FILES =			action_defs.h \
+						action_lst.h \
+						push_swap.h \
+
+SRCS_ACTIONS_DIR = 		srcs/actions/
 SRC_ACTION_FILES = 		swap.c \
 						push.c \
 						rotate.c \
 						reverse_rotate.c \
 						action_lst.c \
 
-SRCS_MAIN_DIR = 		main/
+SRCS_MAIN_DIR = 		srcs/main/
 SRC_MAIN_FILES = 		error_free.c \
 						gen_stack.c \
 
-SRCS_UTILS_DIR = 		utils/
+SRCS_UTILS_DIR = 		srcs/utils/
 SRC_UTILS_FILES = 		ft_atoi.c \
 						ft_atol.c \
 						ft_error_message.c \
+						ft_free_argv.c \
 						ft_free_stack.c \
+						ft_isdigit.c \
 						ft_lst_last.c \
 						ft_lst_size.c \
 						ft_lstadd_flinked.c \
 						ft_num_begins.c \
+						ft_putstr_fd.c \
 						ft_split.c \
 						ft_strlen.c \
-							  
+
+SRC_LIB_FILES = $(SRC_FILES:.c=.o)
+OBJS = $(addprefix $(SRCS_LIB_DIR), $(SRC_LIB_FILES))
+
 OBJS_DIR =	objs/
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJ_FILES))
@@ -49,27 +57,25 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rc
-INCLUDE  = -I ./include/ -I ./libft/include/
-
+INCLUDE = -I include/
 all: 		$(NAME)
 
-m_libft:
-			@make -C $(LIBFT_DIR)
-
 clean: 		
-			make -C $(LIBFT_DIR) clean
 			@$(RM) $(OBJS)
 			@$(RM) $(OBJS_ACTIONS)
-
+ 
 fclean: 	clean
-			make -C $(LIBFT_DIR) fclean
 			@$(RM) $(NAME)
 
 re:			fclean all
 
-$(NAME):	m_libft $(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(OBJS_MAIN_DIR) $(OBJS_PARSING) $(OBJS_UTILS_DIR) $(OBJS_ALGORITHM) 
-			@$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) $(OBJS_PARSING) $(OBJS_ALGORITHM) -Llibft/ -lft -o $@
+$(NAME):	$(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(OBJS_MAIN_DIR) $(OBJS_PARSING) $(OBJS_UTILS_DIR) $(OBJS_ALGORITHM) 
+			@$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) $(OBJS_PARSING) $(OBJS_ALGORITHM) -o $@
 
+$(SRCS_DIR):
+						@mkdir $@
+$(SRC_LIB_FILES):
+						@mkdir $@
 $(OBJS_DIR):
 						@mkdir $@
 $(OBJS_ACTIONS_DIR):
@@ -78,6 +84,9 @@ $(OBJS_MAIN_DIR):
 						@mkdir $@
 $(OBJS_UTILS_DIR):
 						@mkdir $@
+
+$(SRC_LIB_FILES)%.o:	$(SRCS_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)

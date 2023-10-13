@@ -6,11 +6,11 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:49:00 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/06 17:34:22 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:56:23 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static long	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	long	res;
 	int		sign;

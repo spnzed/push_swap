@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:18:15 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/06 19:20:39 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:30:26 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void ft_free_stack(t_node **stack)
 	t_node *tmp;
 	
 	if (!stack)
-		return (0);
+		exit (1);
 	current = *stack;
 	while (current)
 	{

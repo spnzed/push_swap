@@ -6,9 +6,11 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:13:33 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/06 18:21:36 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:41:26 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int ft_error_message(char num)
 {
