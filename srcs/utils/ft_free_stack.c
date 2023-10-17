@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:18:15 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/13 20:30:26 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/17 00:44:49 by aaronespino      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 
 void ft_free_stack(t_node **stack)
 {
-	t_node *current;
 	t_node *tmp;
+	t_node *current;
 	
 	if (!stack)
-		exit (1);
+		return ;
 	current = *stack;
 	while (current)
 	{

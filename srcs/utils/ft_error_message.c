@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error_message.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:13:33 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/13 18:41:26 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/17 00:38:57 by aaronespino      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

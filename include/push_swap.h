@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/13 20:35:53 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/16 23:07:13 by aaronespino      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
+
 
 typedef struct s_node
 {
@@ -31,14 +33,14 @@ typedef struct s_node
 
 //	main
 //	error_free.c
-	void		ft_error_free(t_node **stack, char **argv, int flag_argc);
+	void		ft_error_free(t_node **stack);
 	int 		ft_error_syntax(char *num);
 	int 		ft_error_max(char *str);
 	void		ft_free_argv(char **argv);
 	int 		ft_error_duplicate(t_node *node, int num);
 //	gen_stack.c
-	int			merge_nodes(t_node **stack, int nbr);
-	void		gen_stack(t_node **stack, char **nums, int flag_argc);
+	void		merge_nodes(t_node **stack, int nbr);
+	void		gen_stack(t_node **stack, char **nums);
 //	utils
 	int			ft_atoi(const char *str);
 	long		ft_atol(const char *str);
@@ -47,7 +49,6 @@ typedef struct s_node
 //	new utils
 	int 		ft_error_message(char num);
 	void 		ft_free_stack(t_node **stack);
-	t_node		*ft_last_node(t_node *head);
 	int 		ft_num_begins(char *str);
 	void		ft_lstadd_flinked(t_node **lst, t_node *new);
 	int			ft_lst_size(t_node *node);

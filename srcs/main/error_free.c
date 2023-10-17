@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/13 20:27:14 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/17 00:37:01 by aaronespino      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 //Index
 //	~Free Stacks
@@ -20,13 +20,9 @@
 
 //ft_error_free hara lo siguiente
 //	usar free_stack
-void ft_error_free(t_node **stack, char **argv, int flag_argc)
+void ft_error_free(t_node **stack)
 {
-	argv = 0;
 	ft_free_stack(stack);
-	if (flag_argc == 2)
-		ft_free_argv(argv);
-	ft_error_message ('0');
 	exit (1);
 }
 
@@ -41,7 +37,7 @@ int ft_error_syntax(char *num)
 	int i;
 	
 	i = 0;
-	if (!(num[0] == '+' || num[0] == '-' ||
+	if (!((num[0] == '+' || num[0] == '-') ||
 		(num[0] >= '0' && num[0] <= '9')))
 		return (ft_error_message('1'));
 	if ((num[0] == '+' || num[0] == '-') &&
@@ -66,10 +62,8 @@ int ft_error_max(char *str)
 {
 	long nbr;
 	int	digits;
-	int i;
 
-	i = ft_num_begins(str);
-	digits = ft_strlen(str + i);
+	digits = ft_strlen(str);
 	if (digits > 18)
 	{	
 		if (str[0] == '-')
@@ -81,7 +75,8 @@ int ft_error_max(char *str)
 		return(ft_error_message('4'));
 	else if (nbr < INT_MIN)
 		return(ft_error_message('5'));
-	return (0);
+	else
+		return (0);
 }
 
 //ft_error_duplicate debera hacer lo siguiente
@@ -96,7 +91,7 @@ int ft_error_duplicate(t_node *node, int num)
 	while(node)
 	{
 		if (node->value == num)
-			return (ft_error_message('2'));
+			return (ft_error_message('3'));
 		node = node->next;
 	}
 	return (0);

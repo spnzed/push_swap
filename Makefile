@@ -54,7 +54,7 @@ OBJ_UTILS_FILES = $(SRC_UTILS_FILES:.c=.o)
 OBJS_ALGORITHM = $(addprefix $(OBJS_UTILS_DIR), $(OBJ_UTILS_FILES))
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 AR = ar rc
 INCLUDE = -I include/
@@ -63,6 +63,8 @@ all: 		$(NAME)
 clean: 		
 			@$(RM) $(OBJS)
 			@$(RM) $(OBJS_ACTIONS)
+			@$(RM) $(OBJS_ALGORITHM)
+			@$(RM) $(OBJS_PARSING)
  
 fclean: 	clean
 			@$(RM) $(NAME)
