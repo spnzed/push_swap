@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/16 23:07:13 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/10/18 21:09:19 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_node
 	void		ft_free_argv(char **argv);
 	int 		ft_error_duplicate(t_node *node, int num);
 //	gen_stack.c
-	void		merge_nodes(t_node **stack, int nbr);
+	void		merge_nodes(t_node **stack, int nbr, int mode);
 	void		gen_stack(t_node **stack, char **nums);
 //	utils
 	int			ft_atoi(const char *str);
@@ -51,10 +51,11 @@ typedef struct s_node
 	void 		ft_free_stack(t_node **stack);
 	int 		ft_num_begins(char *str);
 	void		ft_lstadd_flinked(t_node **lst, t_node *new);
+	void		ft_lstadd_blinked(t_node **lst, t_node *new);
 	int			ft_lst_size(t_node *node);
 	t_node 		*ft_lst_last(t_node *node);
 	void		ft_putstr_fd(char *s, int fd);
 	int			ft_isdigit(int i);
-
+	void 		ft_print_stack(t_node *stack);
 
 #endif

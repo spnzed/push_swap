@@ -6,13 +6,13 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:27:26 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/13 17:39:01 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:38:35 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_node **head)
+static void swap(t_node **head)
 {
 	t_node *aux;
 	t_node *first;
@@ -22,11 +22,11 @@ static void	swap(t_node **head)
 	second = (*head)->next;
 	aux = NULL;
 	if (second->next)
-		aux = second->next;
+	 	aux = second->next;
 	first->next = NULL;
-	second->next = NULL;
 	ft_lstadd_flinked(&aux, first);
 	ft_lstadd_flinked(&aux, second);
+    *head = aux;
 }
 
 void	sa(t_node **a, int checker)

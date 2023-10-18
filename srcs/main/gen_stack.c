@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:16:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/17 00:43:53 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/10/18 17:56:50 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@
 //		el ultimo nodo sera last_node del stack
 //		el siguiente sera node
 //		el previo sera last_node
-void	merge_nodes(t_node **stack, int nbr)
+void	merge_nodes(t_node **stack, int nbr, int mode)
 {
 	t_node	*node;
 	t_node	*last_node;
-	
+
 	if (!stack)
-		return ;
+		exit (1) ;
 	node = malloc(sizeof(t_node));
 	if (!node)
-		return ;
+		exit (1);
 	node->next = NULL;
 	node->value = nbr;
-	if (!stack)
+	if (mode == 0)
 	{
-		stack = &node;
+		*stack = node;
 		node->prev = NULL;
 	}
 	else
@@ -70,12 +70,12 @@ void	gen_stack(t_node **stack, char **nums)
 	{
 		if (ft_error_syntax(nums[i]))
 			ft_error_free(stack);
-		nbr = ft_atol(nums[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
+		if (ft_error_max(nums[i]))
 			ft_error_free(stack);
+		nbr = ft_atoi(nums[i]);
 		if (ft_error_duplicate(*stack, (int)nbr))
 			ft_error_free(stack);
-		merge_nodes(stack, nbr);
+		merge_nodes(stack, nbr, i);
 		i++;
 	}
 }

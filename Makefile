@@ -29,6 +29,7 @@ SRC_UTILS_FILES = 		ft_atoi.c \
 						ft_lst_last.c \
 						ft_lst_size.c \
 						ft_lstadd_flinked.c \
+						ft_lstadd_blinked.c \
 						ft_num_begins.c \
 						ft_putstr_fd.c \
 						ft_split.c \
