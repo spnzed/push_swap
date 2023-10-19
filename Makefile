@@ -68,7 +68,8 @@ clean:
 			@$(RM) $(OBJS_PARSING)
  
 fclean: 	clean
-			@$(RM) $(NAME)
+			@$(RM) $(NAME) 
+			@$(RM) -rf $(OBJS_DIR)
 
 re:			fclean all
 
