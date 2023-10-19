@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:40 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/18 21:17:15 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:43:09 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,7 @@
 
 static void	rotate(t_node **head)
 {
-	t_node	*aux;
-	t_node	*f;
-
-	if (ft_lst_size(*head) > 1)
-	{
-		aux = *head;
-		head = &(*head)->next;
-		f = ft_lst_last(*head);
-		aux->next = NULL;
-		f->next = aux;
-	}
-}
-
-static void	rotate(t_node **head)
-{
 	t_node *first;
-	//t_node *last;
 	t_node *aux;
 	
     if (ft_lst_size(*head) > 1)

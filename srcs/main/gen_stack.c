@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:16:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/18 17:56:50 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:08:36 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	merge_nodes(t_node **stack, int nbr, int mode)
 //		Comprobar limites de int
 // 		Comprobar duplicados
 // 	Merge_Nodes
-void	gen_stack(t_node **stack, char **nums)
+void	gen_stack(t_node **stack, char **nums, bool argc_2)
 {
 	int	nbr;
 	int	i;
@@ -78,4 +78,6 @@ void	gen_stack(t_node **stack, char **nums)
 		merge_nodes(stack, nbr, i);
 		i++;
 	}
+	if (argc_2)
+		ft_free_argv(nums);
 }

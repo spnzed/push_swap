@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:37 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/13 18:04:30 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:54:37 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static void	reverse_rotate(t_node **head)
 {
-	t_node	*f;
+	t_node	*first;
 	t_node	*aux;
-	int		i;
+	t_node	*last;
+	t_node	*new_end;
 
 	if (ft_lst_size(*head) > 1)
 	{
-		aux = *head;
-		f = ft_lst_last(*head);
-		i = ft_lst_size(aux);
-		while (aux->next && i > 2)
-		{
-			aux = aux->next;
-			i--;
-		}
-		aux->next = NULL;
-		f->next = *head;
-		head = &f;
+		first = (*head);
+		last = ft_lst_last(*head);
+        new_end = last->prev;
+        new_end->next = NULL;
+        if (first->next)
+            aux = first;
+        ft_lstadd_flinked(&aux, last);
+        *head = aux;
 	}
+    else
+        return ;
 }
 
 void	rra(t_node **a, int checker)

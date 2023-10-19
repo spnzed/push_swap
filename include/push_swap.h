@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/18 21:09:19 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:25:03 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-
 typedef struct s_node
 {
 	int 			value;
@@ -31,6 +30,23 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
+// actions
+
+void			sa(t_node **a, int checker);
+void			sb(t_node **b, int checker);
+void			ss(t_node **a, t_node **b, int checker);
+
+void			pa(t_node **a, t_node **b, int checker);
+void			pb(t_node **a, t_node **b, int checker);
+
+void			ra(t_node **a, int checker);
+void			rb(t_node **b, int checker);
+void			rr(t_node **a, t_node **b, int checker);
+
+void			rra(t_node **a, int checker);
+void			rrb(t_node **b, int checker);
+void			rrr(t_node **a, t_node **b, int checker);
+
 //	main
 //	error_free.c
 	void		ft_error_free(t_node **stack);
@@ -40,7 +56,7 @@ typedef struct s_node
 	int 		ft_error_duplicate(t_node *node, int num);
 //	gen_stack.c
 	void		merge_nodes(t_node **stack, int nbr, int mode);
-	void		gen_stack(t_node **stack, char **nums);
+	void		gen_stack(t_node **stack, char **nums, bool argc_2);
 //	utils
 	int			ft_atoi(const char *str);
 	long		ft_atol(const char *str);
