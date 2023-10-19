@@ -26,7 +26,7 @@ To-Do
 
 -  ✅ Parsear input como argumento que entra como diferentes ints
 -  ✅ Programar acciones de push_swap... SwapA SwapB
--  3 Sort de 3 numeros (Super recomendable que cojas papel  y boli y te apuntes todos los casos diferentes del sort de 3 y lo resuelvas tu para luego aplicarlo. Intenta siempre priorizar que el numero maximo quede abajo.)
+-  ✅ Sort de 3 numeros (Super recomendable que cojas papel  y boli y te apuntes todos los casos diferentes del sort de 3 y lo resuelvas tu para luego aplicarlo. Intenta siempre priorizar que el numero maximo quede abajo.)
 -  4 Aplicar algoritmo
 	- 4.1 Pasar las cosas a stack_B
 	- 4.2 Pasar las cosas a stack_A
