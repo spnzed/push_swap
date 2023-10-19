@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:27:26 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/18 18:38:35 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:10:36 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,21 @@ static void swap(t_node **head)
     *head = aux;
 }
 
-void	sa(t_node **a, int checker)
+void	sa(t_node **a)
 {
 	swap(a);
-	if (!checker)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **b, int checker)
+void	sb(t_node **b)
 {
 	swap(b);
-	if (!checker)
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
-void	ss(t_node **a, t_node **b, int checker)
+void	ss(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
-	if (!checker)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

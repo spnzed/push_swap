@@ -4,8 +4,7 @@ SRCS_DIR = srcs/
 SRC_FILES =	push_swap.c \
 
 SRCS_LIB_DIR =			include/
-SRC_LIB_FILES =			action_defs.h \
-						action_lst.h \
+SRC_LIB_FILES =			action_lst.h \
 						push_swap.h \
 
 SRCS_ACTIONS_DIR = 		srcs/actions/
@@ -13,11 +12,11 @@ SRC_ACTION_FILES = 		swap.c \
 						push.c \
 						rotate.c \
 						reverse_rotate.c \
-						action_lst.c \
 
 SRCS_MAIN_DIR = 		srcs/main/
 SRC_MAIN_FILES = 		error_free.c \
 						gen_stack.c \
+						sort.c \
 
 SRCS_UTILS_DIR = 		srcs/utils/
 SRC_UTILS_FILES = 		ft_atoi.c \
@@ -28,6 +27,7 @@ SRC_UTILS_FILES = 		ft_atoi.c \
 						ft_isdigit.c \
 						ft_lst_last.c \
 						ft_lst_size.c \
+						ft_lst_sorted.c \
 						ft_lstadd_flinked.c \
 						ft_lstadd_blinked.c \
 						ft_num_begins.c \

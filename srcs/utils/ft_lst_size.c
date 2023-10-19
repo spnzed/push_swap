@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:07:37 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/13 18:41:55 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:48:29 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_lst_size(t_node *node)
 	i = 0;
 	if (!node)
 		return (0);
-	while (node->next)
+	while (node)
 	{
 		node = node->next;
 		i++;

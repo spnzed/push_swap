@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:40 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/19 15:43:09 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:41:36 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,21 @@ static void	rotate(t_node **head)
         return ;
 }
 
-void	ra(t_node **a, int checker)
+void	ra(t_node **a)
 {
 	rotate(a);
-	if (!checker)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b, int checker)
+void	rb(t_node **b)
 {
 	rotate(b);
-	if (!checker)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void	rr(t_node **a, t_node **b, int checker)
+void	rr(t_node **a, t_node **b)
 {
 	rotate(a);
 	rotate(b);
-	if (!checker)
-		write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }

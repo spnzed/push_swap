@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:37 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/19 15:54:37 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:12:51 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	reverse_rotate(t_node **head)
 
 	if (ft_lst_size(*head) > 1)
 	{
-		first = (*head);
+		first = *head;
 		last = ft_lst_last(*head);
         new_end = last->prev;
         new_end->next = NULL;
@@ -34,24 +34,21 @@ static void	reverse_rotate(t_node **head)
         return ;
 }
 
-void	rra(t_node **a, int checker)
+void	rra(t_node **a)
 {
 	reverse_rotate(a);
-	if (!checker)
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
-void	rrb(t_node **b, int checker)
+void	rrb(t_node **b)
 {
 	reverse_rotate(b);
-	if (!checker)
-		write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }
 
-void	rrr(t_node **a, t_node **b, int checker)
+void	rrr(t_node **a, t_node **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	if (!checker)
-		write(1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }

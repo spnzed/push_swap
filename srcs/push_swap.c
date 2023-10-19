@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/19 16:13:15 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:04:41 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,16 @@ int main (int argc, char **argv)
     }
     else
         gen_stack (&stack_a, argv + 1, false);
-    ft_print_stack(stack_b);
+    if (!ft_lst_sorted(stack_a))
+    {
+        if (ft_lst_size(stack_a) == 2)
+            sa(&stack_a);
+        else if (ft_lst_size(stack_a) == 3)
+            ft_lil_sort(&stack_a);
+        // else
+        //     ft_sort(&stack_a, &stack_b);
+    }
+    ft_print_stack(stack_a);
     ft_free_stack(&stack_a);
     return(0);
 }

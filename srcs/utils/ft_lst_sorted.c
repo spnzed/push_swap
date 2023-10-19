@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_lst_sorted.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 18:29:29 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/19 16:42:17 by aaespino         ###   ########.fr       */
+/*   Created: 2023/10/19 18:19:00 by aaespino          #+#    #+#             */
+/*   Updated: 2023/10/19 18:27:03 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_node **stack_a, t_node **stack_b)
+bool ft_lst_sorted(t_node *stack)
 {
-	t_node	*head_a;
-	t_node	*head_b;
-
-	head_a = *stack_a;
-	head_b = *stack_b;
-	if (head_b != NULL)
-		ft_lstadd_flinked(stack_a, head_b);
-	else if (!stack_b)
-		exit(1);
-}
-
-void	pa(t_node **a, t_node **b)
-{
-	push(a, b);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_node **a, t_node **b)
-{
-	push(b, a);
-	write(1, "pb\n", 3);
+	if (!stack)
+		return (false);
+	while (stack)
+	{
+		if (stack->next->value < stack->value)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
 }
