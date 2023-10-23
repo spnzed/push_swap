@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:56:17 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/19 19:05:11 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:31:58 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,24 @@ void ft_lil_sort(t_node **stack)
 	}
 	else if (first < second && second > third && first > third)
 		rra(stack);
+}
+
+void ft_BIG_sort(t_node **stack)
+{
+	
+}
+
+void ft_sort(t_node **a, t_node **b)
+{
+	t_node 	smallest;
+	int 	len_b;
+
+	len_b = ft_lst_size(b);
+	while (len_b-- < 3)
+		pb(a, b);
+	while (*a)
+	{
+		ft_init_nodes(a, b);
+		ft_move_nodes();
+	}
 }
