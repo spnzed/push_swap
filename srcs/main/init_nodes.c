@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:32:35 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/23 18:09:46 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:51:44 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ static void set_target_node(t_node *a, t_node *b)
 		a = a->next;
 	}
 }
+
+static void set_price(t_node *a, t_node *b)
+{
+	
+}
+
 
 void ft_init_nodes(t_node *a, t_node *b)
 {
