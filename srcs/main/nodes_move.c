@@ -6,9 +6,59 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:46:42 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/24 18:46:53 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/25 19:37:37 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//move nodes
+//	rotate_both
+//	reverse_rotate_both
+//	finish_rotation
+
+static void	rotate_both(t_node **a, t_node **b, t_node *cheapest)
+{
+	while (*a != cheapest && *b != cheapest->target)
+		rr(a, b);
+	set_current_position(a);
+	set_current_position(b);
+}
+
+static void	reverse_rotate_both(t_node **a, t_node **b, t_node *cheapest)
+{
+	while (*a != cheapest && *b != cheapest->target)
+		rrr(a, b);
+	set_current_position(a);
+	set_current_position(b);
+}
+
+t_node	*ft_return_cheapest(t_node *stack)
+{
+	t_node	*cheapest;
+
+	if (!stack)
+		return (NULL);
+	cheapest = NULL;
+	while (stack)
+	{
+		if (stack->cheapest == true)
+			cheapest = stack;
+		stack = stack->next;
+	}
+	return (cheapest);
+}
+
+void	ft_move_nodes(t_node **a, t_node **b)
+{
+	t_node	*cheapest;
+
+	cheapest = ft_return_cheapest(*a);
+	if (cheapest->exceeds_center == true &&
+	cheapest->target->exceeds_center == true)
+		rotate_both(a, b, cheapest);
+	else if (cheapest->exceeds_center == false &&
+	cheapest->target->exceeds_center == false)
+		reverse_rotate_both(a, b, cheapest);
+	pb(b, a);
+}
