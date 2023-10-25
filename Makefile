@@ -15,13 +15,17 @@ SRC_ACTION_FILES = 		swap.c \
 
 SRCS_MAIN_DIR = 		srcs/main/
 SRC_MAIN_FILES = 		error_free.c \
-						gen_stack.c \
+						genstack.c \
+						nodes_init.c \
+						nodes_move.c \
 						sort.c \
 
 SRCS_UTILS_DIR = 		srcs/utils/
 SRC_UTILS_FILES = 		ft_atoi.c \
 						ft_atol.c \
 						ft_error_message.c \
+						ft_find_biggest.c \
+						ft_find_smallest.c \
 						ft_free_argv.c \
 						ft_free_stack.c \
 						ft_isdigit.c \
@@ -46,11 +50,11 @@ OBJS_ACTIONS_DIR = objs/actions/
 OBJ_ACTION_FILES = $(SRC_ACTION_FILES:.c=.o)
 OBJS_ACTIONS = $(addprefix $(OBJS_ACTIONS_DIR), $(OBJ_ACTION_FILES))
 
-OBJS_MAIN_DIR = objs/parsing/
+OBJS_MAIN_DIR = objs/main/
 OBJ_MAIN_FILES = $(SRC_MAIN_FILES:.c=.o)
 OBJS_PARSING = $(addprefix $(OBJS_MAIN_DIR), $(OBJ_MAIN_FILES))
 
-OBJS_UTILS_DIR = objs/algorithm/
+OBJS_UTILS_DIR = objs/utils/
 OBJ_UTILS_FILES = $(SRC_UTILS_FILES:.c=.o)
 OBJS_ALGORITHM = $(addprefix $(OBJS_UTILS_DIR), $(OBJ_UTILS_FILES))
 

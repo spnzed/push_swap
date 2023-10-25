@@ -18,7 +18,7 @@ t_node	*ft_find_biggest(t_node *stack)
 	t_node	*biggest_n;
 
 	if (!stack)
-		return ;
+		return (NULL);
 	biggest = INT_MIN;
 	while (stack)
 	{

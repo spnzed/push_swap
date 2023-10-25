@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/24 18:42:49 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:11:26 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_node
 	int 			value;
 	int 			current_position;
 	int 			index;
-	int 			push_price;
+	int 			price;
 	struct s_node	*target;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -61,6 +61,8 @@ void				rrr(t_node **a, t_node **b);
 	void			gen_stack(t_node **stack, char **nums, bool argc_2);
 //	sort.c
 	void 			ft_lil_sort(t_node **stack);
+//	void 			ft_BIG_sort(t_node **stack);
+	void 			ft_sort(t_node **a, t_node **b);
 //	init_nodes.c
 	void			ft_init_nodes(t_node *a, t_node *b);
 //	utils

@@ -6,53 +6,54 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:32:35 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/24 18:46:39 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:41:53 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void set_current_position(t_node *stack)
+static void set_current_position (t_node *stack)
 {
 	int i;
 	int center;
 
 	i = 0;
-	if(!stack)
+	if (!stack)
 		return ;
 	center = ft_lst_size(stack) / 2;
 	while (stack)
 	{
+		stack->index = i;
 		if (i <= center)
 			stack->exceeds_center = true;
 		else
 			stack->exceeds_center = false;
-		i++;
 		stack = stack->next;
+		++i;
 	}
 }
 
 static void set_target_node(t_node *a, t_node *b)
 {
-	t_node	*current_b;
 	t_node	*target;
-	long	match_index;
+	t_node	*current_b;
+	long	best_index;
 
+	current_b = b;
+	best_index = LONG_MIN;
 	while (a)
 	{
-		match_index = LONG_MIN;
-		current_b = b;
 		while (current_b)
 		{
-			if (a->value > current_b->value && 
-			current_b->value > match_index)
+			if (best_index < current_b->value && 
+			current_b->value < a->value)
 			{
-				match_index = current_b->value;
+				best_index = current_b->value;
 				target = current_b;
 			}
-			current_b->next;
+			current_b = current_b->next;
 		}
-		if (match_index == LONG_MIN)
+		if (best_index == LONG_MIN)
 			a->target = ft_find_biggest(b);
 		else
 			a->target = target;
@@ -60,37 +61,37 @@ static void set_target_node(t_node *a, t_node *b)
 	}
 }
 
-// static void set_price(t_node *a, t_node *b)
-// {
-// 	int len_a;
-// 	int len_b;
-
-// 	len_a = ft_lst_size(a);
-// 	len_b = ft_lst_size(b);
-// 	while (a)
-// 	{
-// 		a->push_price = a->index;
-// 		if (a->exceeds_center == false)
-// 			a->push_price = len_a - (a->index);
-// 		if (a->exceeds_center == true)
-// 			a->push_price += a->target->index;
-// 		a = a->next;
-// 	}
-// }
-
-static void	set_cheapest(t_node *stack)
+static void set_price(t_node *a, t_node *b)
 {
-	long	cheapest_value;
-	t_node	*cheapest_node;
+	int	len_a;
+	int	len_b;
 
-	if (!stack)
-		return ;
+	len_a = ft_lst_size(a);
+	len_b = ft_lst_size(b);
+	while (a)
+	{
+		a->price = a->index;
+		if (a->exceeds_center == false)
+			a->price = len_a - (a->index);
+		if (a->target->exceeds_center == true)
+			a->price += a->target->index;
+		else
+			a->price += len_b - (a->target->index);
+		a = a->next;
+	}
+}
+
+static void set_cheapest(t_node *stack)
+{
+	t_node 	*cheapest_node;
+	long	cheapest_price;
+
+	cheapest_price = LONG_MAX;
 	while (stack)
 	{
-		cheapest_value = LONG_MIN;
-		if (stack->push_price > cheapest_value)
+		if (stack->price < cheapest_price)
 		{
-			cheapest_value = stack->push_price;
+			cheapest_price = stack->price;
 			cheapest_node = stack;
 		}
 		stack = stack->next;
@@ -103,6 +104,6 @@ void ft_init_nodes(t_node *a, t_node *b)
 	set_current_position(a);
 	set_current_position(b);
 	set_target_node(a, b);
-//	set_price(a, b);
+	set_price(a, b);
 	set_cheapest(a);
 }

@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/23 13:48:36 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:56:06 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int main (int argc, char **argv)
             sa(&stack_a);
         else if (ft_lst_size(stack_a) == 3)
             ft_lil_sort(&stack_a);
-        else if (ft_lst_size(stack_a) == 5)
-            ft_BIG_sort(&stack_a);
+        // else if (ft_lst_size(stack_a) == 5)
+        //     ft_BIG_sort(&stack_a);
         else
             ft_sort(&stack_a, &stack_b);
     }
-    ft_print_stack(stack_a);
-    ft_free_stack(&stack_a);
+    // ft_print_stack(stack_a);
+    // ft_free_stack(&stack_a);
     return(0);
 }

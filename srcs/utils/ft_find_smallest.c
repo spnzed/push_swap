@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 18:04:46 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/23 18:09:29 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:14:48 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*ft_find_smallest(t_node *stack)
 	t_node	*smallest_n;
 
 	if (!stack)
-		return ;
+		return (NULL);
 	smallest = INT_MAX;
 	while (stack)
 	{

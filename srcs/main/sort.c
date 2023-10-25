@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:56:17 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/24 17:27:39 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:37:01 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,30 @@ void ft_lil_sort(t_node **stack)
 		rra(stack);
 }
 
-void ft_BIG_sort(t_node **stack)
-{
+// void ft_BIG_sort(t_node **stack)
+// {
 	
-}
+// }
 
 void ft_sort(t_node **a, t_node **b)
 {
-	t_node 	smallest;
+	//t_node 	smallest;
 	int 	len_a;
 
-	len_a = ft_lst_size(a);
+	len_a = ft_lst_size(*a);
 	if (len_a-- > 3 && !ft_lst_sorted(*a))
-		pb(a, b);
+		pb(b, a);
 	if (len_a-- > 3 && !ft_lst_sorted(*a))
-		pb(a, b);
-	while (len_a-- > 3 && !ft_lst_sorted(*a))
-	{
-		ft_init_nodes(*a, *b);
-		ft_move_nodes(a, b);
-	}
-	ft_lil_sort(a);
-	while (*b)
-	{
-		ft_init_nodes(*a, *b);
-		ft_move_nodes(a, b);
-	}
+		pb(b, a);
+	ft_init_nodes(*a, *b);
+	//while (len_a-- > 3 && !ft_lst_sorted(*a))
+	//{
+	// //	ft_move_nodes(a, b);
+	// }
+	// ft_lil_sort(a);
+	// while (*b)
+	// {
+	// 	ft_init_nodes(*a, *b);
+	// 	// ft_move_nodes(a, b);
+	// }
 }
