@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/10/25 19:37:07 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:31:53 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ void				rrr(t_node **a, t_node **b);
 	void 			ft_lil_sort(t_node **stack);
 //	void 			ft_BIG_sort(t_node **stack);
 	void 			ft_sort(t_node **a, t_node **b);
-//	init_nodes.c
+//	nodes_init.c
 	void 			set_current_position(t_node *stack);
 	void			ft_init_nodes(t_node *a, t_node *b);
+//	nodes_move.c
+	void			ft_move_nodes(t_node **a, t_node **b);
 //	utils
 	int				ft_atoi(const char *str);
 	long			ft_atol(const char *str);

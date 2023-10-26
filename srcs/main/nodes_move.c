@@ -6,34 +6,29 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:46:42 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/25 19:37:37 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:21:17 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//move nodes
-//	rotate_both
-//	reverse_rotate_both
-//	finish_rotation
-
 static void	rotate_both(t_node **a, t_node **b, t_node *cheapest)
 {
 	while (*a != cheapest && *b != cheapest->target)
 		rr(a, b);
-	set_current_position(a);
-	set_current_position(b);
+	set_current_position(*a);
+	set_current_position(*b);
 }
 
 static void	reverse_rotate_both(t_node **a, t_node **b, t_node *cheapest)
 {
 	while (*a != cheapest && *b != cheapest->target)
 		rrr(a, b);
-	set_current_position(a);
-	set_current_position(b);
+	set_current_position(*a);
+	set_current_position(*b);
 }
 
-t_node	*ft_return_cheapest(t_node *stack)
+static t_node	*ft_return_cheapest(t_node *stack)
 {
 	t_node	*cheapest;
 
@@ -49,6 +44,27 @@ t_node	*ft_return_cheapest(t_node *stack)
 	return (cheapest);
 }
 
+static void	finish_rotation(t_node **stack, t_node *top, char which)
+{
+	while (*stack != top)
+	{
+		if (which == 'a')
+		{
+			if (top->exceeds_center == true)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		if (which == 'b')
+		{
+			if (top->exceeds_center == true)
+				rb(stack);
+			else
+				rrb(stack);
+		}
+	}
+}
+
 void	ft_move_nodes(t_node **a, t_node **b)
 {
 	t_node	*cheapest;
@@ -60,5 +76,7 @@ void	ft_move_nodes(t_node **a, t_node **b)
 	else if (cheapest->exceeds_center == false &&
 	cheapest->target->exceeds_center == false)
 		reverse_rotate_both(a, b, cheapest);
+	finish_rotation(a, cheapest, 'a');
+	finish_rotation(b, cheapest->target, 'b');
 	pb(b, a);
 }
