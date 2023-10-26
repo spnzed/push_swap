@@ -1,6 +1,6 @@
 <h1 align=center>
-	<b>push_swap</b>
-	 
+	<b>🔃↔️push_swap</b>
+	
   <i>42cursus' project #7</i>
 
 <i>UNDER CONSTRUCTION ⚠️</i>
