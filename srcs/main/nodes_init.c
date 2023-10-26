@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:32:35 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/25 19:36:41 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:02:46 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void set_current_position(t_node *stack)
 		else
 			stack->exceeds_center = false;
 		stack = stack->next;
-		++i;
+		i++;
 	}
 }
 

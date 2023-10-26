@@ -6,11 +6,25 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:56:17 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/26 15:54:32 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:29:41 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// static void	ft_reorder(t_node **stack)
+// {
+// 	t_node *smallest;
+
+// 	smallest = ft_find_biggest(*stack);
+// 	while ((*stack)->value != smallest->value)
+// 	{
+// 		if (smallest->exceeds_center == true)
+// 			ra(stack);
+// 		else
+// 			rra(stack);
+// 	}
+// }
 
 void ft_lil_sort(t_node **stack)
 {
@@ -62,9 +76,16 @@ void ft_sort(t_node **a, t_node **b)
 	while (len_a-- > 3 && !ft_lst_sorted(*a))
 	{
 		ft_init_nodes(*a, *b);
-		ft_move_nodes(a, b);
+		ft_move_nodes(a, b, 'a');
 	}
 	ft_lil_sort(a);
+	while (*b)
+	{
+		ft_init_nodes(*a, *b);
+		ft_move_nodes(b, a, 'b');
+	}
+	set_current_position(*a);
+//	ft_reorder(a);
 	ft_print_stack(*a);
 	ft_print_stack(*b);
 }

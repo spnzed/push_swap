@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:46:42 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/26 16:21:17 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:25:35 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	finish_rotation(t_node **stack, t_node *top, char which)
 			else
 				rra(stack);
 		}
-		if (which == 'b')
+		else if (which == 'b')
 		{
 			if (top->exceeds_center == true)
 				rb(stack);
@@ -65,7 +65,7 @@ static void	finish_rotation(t_node **stack, t_node *top, char which)
 	}
 }
 
-void	ft_move_nodes(t_node **a, t_node **b)
+void	ft_move_nodes(t_node **a, t_node **b, char which)
 {
 	t_node	*cheapest;
 
@@ -76,7 +76,15 @@ void	ft_move_nodes(t_node **a, t_node **b)
 	else if (cheapest->exceeds_center == false &&
 	cheapest->target->exceeds_center == false)
 		reverse_rotate_both(a, b, cheapest);
-	finish_rotation(a, cheapest, 'a');
-	finish_rotation(b, cheapest->target, 'b');
-	pb(b, a);
+	if (which == 'a')
+	{
+		finish_rotation(a, cheapest, 'a');
+		finish_rotation(b, cheapest->target, 'b');
+		pb(b, a);
+	}
+	else
+	{
+		finish_rotation(a, (*b)->target, 'a');
+		pa(a, b);
+	}
 }
