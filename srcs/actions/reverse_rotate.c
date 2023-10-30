@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:37 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/19 19:12:51 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:29:06 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ static void	reverse_rotate(t_node **head)
 	{
 		first = *head;
 		last = ft_lst_last(*head);
+		printf("Last prev: %d, prev value:%d\n", last->value, last->prev->value);
         new_end = last->prev;
         new_end->next = NULL;
         if (first->next)
             aux = first;
-        ft_lstadd_flinked(&aux, last);
-        *head = aux;
+        ft_lstadd_flinked(head, last);
+        *head = last;
+		last = ft_lst_last(*head);
+		printf("Last value: %d\n", last->value);
 	}
     else
         return ;

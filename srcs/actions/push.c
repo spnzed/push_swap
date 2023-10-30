@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:29 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/25 16:53:10 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:05:33 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,15 @@ static void	push(t_node **stack_a, t_node **stack_b)
 	*stack_a = (*stack_a)->next;
 	if (*stack_a)
 		(*stack_a)->prev = NULL;
-	head_a->prev = NULL;
-	if (!*stack_b)
+	if ((*stack_b)->is_end)
 	{
-		*stack_b = head_a;
+		head_a->prev = NULL;
 		head_a->next = NULL;
+		*stack_b = head_a;
 	}
 	else
 	{
-		head_a->next = *stack_b;
-		head_a->next->prev = head_a;
-		*stack_b = head_a;
+		ft_lstadd_flinked(stack_b, head_a);
 	}
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_stack.c                                        :+:      :+:    :+:   */
+/*   genstack.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:16:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/23 17:24:03 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:24:42 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 //		el ultimo nodo sera last_node del stack
 //		el siguiente sera node
 //		el previo sera last_node
-void	merge_nodes(t_node **stack, int nbr, int mode)
+
+void	merge_nodes(t_node **stack, int nbr)
 {
 	t_node	*node;
-	t_node	*last_node;
 
 	if (!stack)
 		exit (1) ;
@@ -40,17 +40,10 @@ void	merge_nodes(t_node **stack, int nbr, int mode)
 		exit (1);
 	node->next = NULL;
 	node->value = nbr;
-	if (mode == 0)
-	{
+	if ((*stack)->is_end)
 		*stack = node;
-		node->prev = NULL;
-	}
 	else
-	{
-		last_node = ft_lst_last(*stack);
-		last_node->next = node;
-		node->prev = last_node;
-	}
+		ft_lstadd_blinked(stack, node);
 }
 
 //gen_stack debe hacer
@@ -75,7 +68,7 @@ void	gen_stack(t_node **stack, char **nums, bool argc_2)
 		nbr = ft_atoi(nums[i]);
 		if (ft_error_duplicate(*stack, (int)nbr))
 			ft_error_free(stack);
-		merge_nodes(stack, nbr, i);
+		merge_nodes(stack, nbr);
 		i++;
 	}
 	if (argc_2)

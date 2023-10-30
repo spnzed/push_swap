@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:56:17 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/26 18:29:41 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:29:48 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,14 @@ void ft_sort(t_node **a, t_node **b)
 	while (len_a-- > 3 && !ft_lst_sorted(*a))
 	{
 		ft_init_nodes(*a, *b);
-		ft_move_nodes(a, b, 'a');
+		ft_move_nodes(a, b);
 	}
 	ft_lil_sort(a);
-	while (*b)
+	while (b)
 	{
-		ft_init_nodes(*a, *b);
-		ft_move_nodes(b, a, 'b');
+	 	ft_init_back(*a, *b);
+	 	ft_move_back(a, b);
 	}
 	set_current_position(*a);
-//	ft_reorder(a);
-	ft_print_stack(*a);
-	ft_print_stack(*b);
+	//ft_reorder(a);
 }

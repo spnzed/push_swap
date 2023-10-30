@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:46:42 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/26 18:25:35 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:25:25 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ static t_node	*ft_return_cheapest(t_node *stack)
 
 static void	finish_rotation(t_node **stack, t_node *top, char which)
 {
-	while (*stack != top)
+	int	val;
+
+	val = top->value;
+	while ((*stack)->value != val)
 	{
 		if (which == 'a')
 		{
@@ -54,6 +57,8 @@ static void	finish_rotation(t_node **stack, t_node *top, char which)
 				ra(stack);
 			else
 				rra(stack);
+			if ((*stack)->value == val)
+				break ;
 		}
 		else if (which == 'b')
 		{
@@ -61,11 +66,13 @@ static void	finish_rotation(t_node **stack, t_node *top, char which)
 				rb(stack);
 			else
 				rrb(stack);
+			if ((*stack)->value == val)
+				break ;
 		}
 	}
 }
 
-void	ft_move_nodes(t_node **a, t_node **b, char which)
+void	ft_move_nodes(t_node **a, t_node **b)
 {
 	t_node	*cheapest;
 
@@ -76,15 +83,20 @@ void	ft_move_nodes(t_node **a, t_node **b, char which)
 	else if (cheapest->exceeds_center == false &&
 	cheapest->target->exceeds_center == false)
 		reverse_rotate_both(a, b, cheapest);
-	if (which == 'a')
-	{
-		finish_rotation(a, cheapest, 'a');
-		finish_rotation(b, cheapest->target, 'b');
-		pb(b, a);
-	}
-	else
-	{
-		finish_rotation(a, (*b)->target, 'a');
-		pa(a, b);
-	}
+	finish_rotation(a, cheapest, 'a');
+	finish_rotation(b, cheapest->target, 'b');
+	pb(b, a);
+}
+
+void	ft_move_back(t_node **a, t_node **b)
+{
+	ft_print_stack(*a);
+	ft_print_stack(*b);
+	finish_rotation(a, (*b)->target, 'a');
+	pa(b, a);
+	printf("A: %d, NEXT: %d, NEXT_PREV:%d\n", (*a)->value, (*a)->next->value, ft_lst_last(*a)->next->value);
+	exit(1);
+	ft_print_stack(*a);
+	ft_print_stack(*b);
+	printf("Next first a:%d\n", (*b)->next->value);
 }
