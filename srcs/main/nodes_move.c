@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:46:42 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/30 19:25:25 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:43:15 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_node	*ft_return_cheapest(t_node *stack)
 	return (cheapest);
 }
 
-static void	finish_rotation(t_node **stack, t_node *top, char which)
+void	finish_rotation(t_node **stack, t_node *top, char which)
 {
 	int	val;
 
@@ -90,13 +90,6 @@ void	ft_move_nodes(t_node **a, t_node **b)
 
 void	ft_move_back(t_node **a, t_node **b)
 {
-	ft_print_stack(*a);
-	ft_print_stack(*b);
 	finish_rotation(a, (*b)->target, 'a');
 	pa(b, a);
-	printf("A: %d, NEXT: %d, NEXT_PREV:%d\n", (*a)->value, (*a)->next->value, ft_lst_last(*a)->next->value);
-	exit(1);
-	ft_print_stack(*a);
-	ft_print_stack(*b);
-	printf("Next first a:%d\n", (*b)->next->value);
 }

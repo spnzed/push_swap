@@ -6,25 +6,25 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:56:17 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/30 18:29:48 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:41:59 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// static void	ft_reorder(t_node **stack)
-// {
-// 	t_node *smallest;
+static void	ft_reorder(t_node **stack)
+{
+	t_node *smallest;
 
-// 	smallest = ft_find_biggest(*stack);
-// 	while ((*stack)->value != smallest->value)
-// 	{
-// 		if (smallest->exceeds_center == true)
-// 			ra(stack);
-// 		else
-// 			rra(stack);
-// 	}
-// }
+	smallest = ft_find_smallest(*stack);
+	while ((*stack)->value != smallest->value)
+	{
+		if (smallest->exceeds_center == true)
+			ra(stack);
+		else
+			rra(stack);
+	}
+}
 
 void ft_lil_sort(t_node **stack)
 {
@@ -53,17 +53,6 @@ void ft_lil_sort(t_node **stack)
 		rra(stack);
 }
 
-// void ft_BIG_sort(t_node **a, t_node **b)
-// {
-// 	while (ft_lst_size(*a) > 3)
-// 	{
-// 		ft_init_nodes(*a, *b);
-// 		ft_finish_rotation(a, ft_find_biggest(*a), 'a');
-// 		pb(b, a);
-// 	}
-// 	ft_lil_sort(a);
-// }
-
 void ft_sort(t_node **a, t_node **b)
 {
 	int 	len_a;
@@ -79,11 +68,11 @@ void ft_sort(t_node **a, t_node **b)
 		ft_move_nodes(a, b);
 	}
 	ft_lil_sort(a);
-	while (b)
+	while (*b)
 	{
 	 	ft_init_back(*a, *b);
 	 	ft_move_back(a, b);
 	}
 	set_current_position(*a);
-	//ft_reorder(a);
+	ft_reorder(a);
 }

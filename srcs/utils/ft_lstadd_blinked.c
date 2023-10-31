@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:55:04 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/19 19:27:55 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:15:43 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	ft_lstadd_blinked(t_node **lst, t_node *new)
 		*lst = new;
 	else
 	{
-		new->prev = aux;
 		while (aux->next)
 			aux = aux->next;
+		new->prev = aux;
 		aux->next = new;
 	}
 }

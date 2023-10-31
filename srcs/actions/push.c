@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:29:29 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/30 19:05:33 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:29:38 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ static void	push(t_node **stack_a, t_node **stack_b)
 		*stack_b = head_a;
 	}
 	else
-	{
 		ft_lstadd_flinked(stack_b, head_a);
-	}
 }
 
 void	pa(t_node **a, t_node **b)
