@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:18:15 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/17 00:44:49 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/10/31 17:56:14 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
