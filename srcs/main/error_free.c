@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/17 00:37:01 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/11/01 13:32:09 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int ft_error_syntax(char *num)
 		return (ft_error_message('2'));
 	while (num[i])
 	{
-		if (!(num[i] >= '0' && num[i] <= '9'))
+		if (i == 0 && !((num[i] >= '0' && num[i] <= '9') || (num[i] == '+' || num[i] == '-')))
+			return (ft_error_message('2'));
+		else if (i != 0 && !(num[i] >= '0' && num[i] <= '9'))
 			return (ft_error_message('2'));
 		i++;
 	}
@@ -67,17 +69,21 @@ int ft_error_max(char *str)
 	if (digits > 18)
 	{	
 		if (str[0] == '-')
-			return(ft_error_message('4'));
-		return(ft_error_message('5'));
+			return(ft_error_message('5'));
+		return(ft_error_message('4'));
 	}
 	nbr = ft_atol(str); 
 	if (nbr > INT_MAX)
-		return(ft_error_message('4'));
-	else if (nbr < INT_MIN)
 		return(ft_error_message('5'));
+	else if (nbr < INT_MIN)
+		return(ft_error_message('4'));
 	else
 		return (0);
 }
+
+
+// -2147483649
+//	2147483647
 
 //ft_error_duplicate debera hacer lo siguiente
 //	Comprobar que node exista
