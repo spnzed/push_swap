@@ -3,89 +3,110 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:30:06 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/17 00:22:25 by aaronespino      ###   ########.fr       */
+/*   Created: 2023/04/01 19:11:45 by utente            #+#    #+#             */
+/*   Updated: 2023/11/01 15:47:20 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stddef.h>
 
-int	count_w(const char *s, char c)
+/*
+ * Args at the command line are
+ * spaced separated strings
+*/
+static int	count_words(char *str, char separator)
 {
-	size_t	i;
-	size_t	count;
-	size_t	trigger;
+	int		count;
+	bool	inside_word;
 
-	i = 0;
 	count = 0;
-	trigger = 0;
-	while (s[i])
+	while (*str)
 	{
-		if (s[i] != c && trigger == 0)
+		inside_word = false;
+		while (*str == separator)
+			++str;
+		while (*str != separator && *str)
 		{
-			trigger = 1;
-			count++;
+			if (!inside_word)
+			{
+				++count;
+				inside_word = true;
+			}
+			++str;
 		}
-		else if (s[i] == c)
-			trigger = 0;
-		i++;
 	}
 	return (count);
 }
 
-char	*write_w(const char *str, int start, int end)
+/*
+ * I exploit static variables
+ * which are basically 
+ * "Global private variables"
+ * i can access it only via the get_next_word function
+*/
+static char	*get_next_word(char *str, char separator)
 {
-	size_t	i;
-	char	*word;
+	static int	cursor = 0;
+	char		*next_str;
+	int			len;
+	int			i;
 
+	len = 0;
 	i = 0;
-	word = malloc(sizeof(char) * (end - start + 1));
-	if (!word)
+	while (str[cursor] == separator)
+		++cursor;
+	while ((str[cursor + len] != separator) && str[cursor + len])
+		++len;
+	next_str = malloc((size_t)len * sizeof(char) + 1);
+	if (NULL == next_str)
 		return (NULL);
-	while (start < end)
-	{
-		word[i] = str[start];
-		i++;
-		start++;
-	}
-	word[i] = '\0';
-	return (word);
+	while ((str[cursor] != separator) && str[cursor])
+		next_str[i++] = str[cursor++];
+	next_str[i] = '\0';
+	return (next_str);
 }
 
-void	put_w(char **array, const char *s, char c)
+/*
+ * I recreate an argv in the HEAP
+ *
+ * +2 because i want to allocate space
+ * for the "\0" Placeholder and the final NULL
+ *
+ * vector_strings-->[p0]-> "\0" Placeholder to mimic argv
+ * 				 |->[p1]->"Hello"
+ * 				 |->[p2]->"how"
+ * 				 |->[p3]->"Are"
+ * 				 |->[..]->"..""
+ * 				 |->[NULL]
+*/
+char	**ft_split(char *str, char separator)
 {
-	size_t	i;
-	size_t	j;
-	int		activador;
+	int		words_number;
+	char	**vector_strings;
+	int		i;
 
 	i = 0;
-	j = 0;
-	activador = -1;
-	while (i <= ft_strlen(s))
+	words_number = count_words(str, separator);
+	if (!words_number)
+		exit(1);
+	vector_strings = malloc(sizeof(char *) * (size_t)(words_number + 2));
+	if (NULL == vector_strings)
+		return (NULL);
+	while (words_number-- >= 0)
 	{
-		if (s[i] != c && activador < 0)
-			activador = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && activador >= 0)
+		if (0 == i)
 		{
-			array[j++] = write_w(s, activador, i);
-			activador = -1;
+			vector_strings[i] = malloc(sizeof(char));
+			if (NULL == vector_strings[i])
+				return (NULL);
+			vector_strings[i++][0] = '\0';
+			continue ;
 		}
-		i++;
+		vector_strings[i++] = get_next_word(str, separator);
 	}
-	array[j] = 0;
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**array;
-
-	if (!s)
-		return (0);
-	array = malloc(sizeof(char *) * (count_w(s, c) + 1));
-	if (!array)
-		return (0);
-	put_w(array, s, c);
-	return (array);
+	vector_strings[i] = NULL;
+	return (vector_strings);
 }

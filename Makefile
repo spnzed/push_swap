@@ -26,8 +26,8 @@ SRC_UTILS_FILES = 		ft_atoi.c \
 						ft_error_message.c \
 						ft_find_biggest.c \
 						ft_find_smallest.c \
-						ft_free_argv.c \
 						ft_free_stack.c \
+						ft_free_argv.c \
 						ft_isdigit.c \
 						ft_lst_last.c \
 						ft_lst_size.c \
@@ -35,6 +35,7 @@ SRC_UTILS_FILES = 		ft_atoi.c \
 						ft_lstadd_flinked.c \
 						ft_lstadd_blinked.c \
 						ft_num_begins.c \
+						ft_print_stack.c \
 						ft_putstr_fd.c \
 						ft_split.c \
 						ft_strlen.c \

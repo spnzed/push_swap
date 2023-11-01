@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_argv.c                                     :+:      :+:    :+:   */
+/*   ft_print_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 16:07:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/01 16:16:24 by aaespino         ###   ########.fr       */
+/*   Created: 2023/11/01 15:13:12 by aaespino          #+#    #+#             */
+/*   Updated: 2023/11/01 16:20:51 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free_argv(char **argv)
+void ft_print_stack(t_node *stack)
 {
-	int	i;
-
-	i = -1;
-	if (NULL == argv || NULL == *argv)
-		return ;
-	while (argv[i])
-		free(argv[i++]);
-	free(argv - 1);
+    while (stack)
+    {
+        printf("%d ", stack->value);
+        stack = stack->next;
+    }
+    printf("\n");
 }

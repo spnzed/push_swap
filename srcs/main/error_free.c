@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/01 13:32:09 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:13:47 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 
 //ft_error_free hara lo siguiente
 //	usar free_stack
-void ft_error_free(t_node **stack)
+void ft_error_free(t_node **stack, char **argv, bool argc2)
 {
 	ft_free_stack(stack);
+	if (argc2)
+		ft_free_argv(argv);
 	exit (1);
 }
 
@@ -69,8 +71,8 @@ int ft_error_max(char *str)
 	if (digits > 18)
 	{	
 		if (str[0] == '-')
-			return(ft_error_message('5'));
-		return(ft_error_message('4'));
+			return(ft_error_message('4'));
+		return(ft_error_message('5'));
 	}
 	nbr = ft_atol(str); 
 	if (nbr > INT_MAX)
