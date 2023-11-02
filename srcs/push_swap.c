@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/01 16:31:41 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/02 17:46:05 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 static t_node *init_stacks(t_node *stack_a, t_node *stack_b, bool flag)
 {
-    stack_a = malloc(sizeof(t_node));
-    if (!stack_a)
-        return (NULL);
-    else if (flag == false)
-        return (stack_a);
-    stack_b = malloc(sizeof(t_node));
-    if (!stack_b)
+    if (flag == false)
     {
-        ft_free_stack(&stack_a);
-        return (NULL);
+        stack_a = malloc(sizeof(t_node));
+        if (!stack_a)
+            return (NULL);
+        stack_a->is_end = true;
+        return (stack_a);
     }
-    return (stack_b);
+    else 
+    {
+        stack_b = malloc(sizeof(t_node));
+        if (!stack_b)
+        {
+            ft_free_stack(&stack_a);
+            return (NULL);
+        }
+        stack_b->is_end = true;
+        return (stack_b);
+    }
 }
 
 static void arguments_check(int argc, char **argv)
@@ -45,32 +52,44 @@ static void fill_stack(int argc, char **argv, t_node **stack_a)
         gen_stack (stack_a, argv, false);
 }
 
-static void init_sorts (t_node **stack_a, t_node **stack_b)
+static void init_sorts (t_node **a, t_node **b, t_node *A, t_node *B)
 {
-    if (!ft_lst_sorted(*stack_a))
+    if (!ft_lst_sorted(*a))
     {
-        if (ft_lst_size(*stack_a) == 2)
-            sa(stack_a);
-        else if (ft_lst_size(*stack_a) == 3)
-            ft_lil_sort(stack_a);
+        if (ft_lst_size(*a) == 2)
+            sa(a);
+        else if (ft_lst_size(*a) == 3)
+            ft_lil_sort(a);
         else
-            ft_sort(stack_a, stack_b);
+            ft_sort(a, b);
     }
+    ft_free_stack(a);
+    ft_free_stack(&A);
+    ft_free_stack(&B);
 }
 
 int main (int argc, char **argv)
 {
-    t_node *stack_a = NULL;
-    t_node *stack_b = NULL;
-
+    t_node *stack_a;
+    t_node *stack_b;
+    t_node *first_A;
+    t_node *first_B;
+    
+    stack_a = NULL;
+    stack_b = NULL;
+    first_A = NULL;
+    first_B = NULL;
     arguments_check(argc, argv);
     stack_a = init_stacks(stack_a, stack_b, false);
-    stack_b = init_stacks(stack_a, stack_b, true);
-    stack_a->is_end = true;
-    stack_b->is_end = true;
-    fill_stack(argc, argv, &stack_a);
-    init_sorts(&stack_a, &stack_b);
-    ft_print_stack(stack_a);
-    ft_free_stack(&stack_a);
-    return(0);
+    if (stack_a)
+        stack_b = init_stacks(stack_a, stack_b, true);
+    if (stack_a && stack_b)
+    {
+        first_A = stack_a;
+        first_B = stack_b;
+        fill_stack(argc, argv, &stack_a);
+        init_sorts(&stack_a, &stack_b, first_A, first_B);
+        return (0);
+    }
+    return(12);
 }
