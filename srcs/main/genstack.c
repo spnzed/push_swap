@@ -34,7 +34,7 @@ void	merge_nodes(t_node **stack, int nbr)
 	t_node	*node;
 
 	if (!stack)
-		exit (1) ;
+		exit (1);
 	node = malloc(sizeof(t_node));
 	if (!node)
 		exit (1);

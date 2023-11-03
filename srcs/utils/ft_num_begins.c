@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int ft_num_begins(char *str)
+int	ft_num_begins(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')

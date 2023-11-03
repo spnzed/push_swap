@@ -14,7 +14,7 @@
 
 int	ft_lst_size(t_node *node)
 {
-	int i;
+	int	i;
 
 	if (!node)
 		return (0);

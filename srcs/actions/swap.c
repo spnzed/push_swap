@@ -12,21 +12,21 @@
 
 #include "push_swap.h"
 
-static void swap(t_node **head)
+static void	swap(t_node **head)
 {
-	t_node *aux;
-	t_node *first;
-	t_node *second;
+	t_node	*aux;
+	t_node	*first;
+	t_node	*second;
 
 	first = *head;
 	second = (*head)->next;
 	aux = NULL;
 	if (second->next)
-	 	aux = second->next;
+		aux = second->next;
 	first->next = NULL;
 	ft_lstadd_flinked(&aux, first);
 	ft_lstadd_flinked(&aux, second);
-    *head = aux;
+	*head = aux;
 }
 
 void	sa(t_node **a)

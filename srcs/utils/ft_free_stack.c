@@ -20,14 +20,15 @@
 //		En tmp meteremos el next de current
 //		Liberamos current
 //		igualamos current a tmp
-//	Asi cuando no haya next tmp tampoco se hara posible y cuando igualemos current saldremos del bucle
+//	Asi cuando no haya next tmp tampoco se hara posible y 
+//	cuando igualemos current saldremos del bucle.
 //	Para terminar igualamos el stack a NULO
 
-void ft_free_stack(t_node **stack)
+void	ft_free_stack(t_node **stack)
 {
-	t_node *tmp;
-	t_node *current;
-	
+	t_node	*tmp;
+	t_node	*current;
+
 	if (!stack)
 		return ;
 	current = *stack;

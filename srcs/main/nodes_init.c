@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void set_current_position(t_node *stack)
+void	set_current_position(t_node *stack)
 {
-	int i;
-	int center;
+	int	i;
+	int	center;
 
 	i = 0;
 	if (!stack)
@@ -33,7 +33,7 @@ void set_current_position(t_node *stack)
 	}
 }
 
-void set_target_node(t_node *a, t_node *b, char which)
+void	set_target_node(t_node *a, t_node *b, char which)
 {
 	t_node	*target;
 	t_node	*current_b;
@@ -42,20 +42,20 @@ void set_target_node(t_node *a, t_node *b, char which)
 	current_b = b;
 	if (which == 'a')
 		best_index = LONG_MIN;
-	else 
+	else
 		best_index = LONG_MAX;
 	while (a)
 	{
 		while (current_b)
 		{
-			if (best_index < current_b->value && 
-			current_b->value < a->value && which == 'a')
+			if (best_index < current_b->value &&
+				current_b->value < a->value && which == 'a')
 			{
 				best_index = current_b->value;
 				target = current_b;
 			}
-			else if (best_index > current_b->value && 
-			current_b->value > a->value && which == 'b')
+			else if (best_index > current_b->value &&
+				current_b->value > a->value && which == 'b')
 			{
 				best_index = current_b->value;
 				target = current_b;

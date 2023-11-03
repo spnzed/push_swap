@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-bool ft_lst_sorted(t_node *stack)
+bool	ft_lst_sorted(t_node *stack)
 {
 	if (!stack)
 		return (false);

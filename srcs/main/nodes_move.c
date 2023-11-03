@@ -78,10 +78,10 @@ void	ft_move_nodes(t_node **a, t_node **b)
 
 	cheapest = ft_return_cheapest(*a);
 	if (cheapest->exceeds_center == true &&
-	cheapest->target->exceeds_center == true)
+		cheapest->target->exceeds_center == true)
 		rotate_both(a, b, cheapest);
-	else if (cheapest->exceeds_center == false &&
-	cheapest->target->exceeds_center == false)
+	else if (cheapest->exceeds_center == false && 
+		cheapest->target->exceeds_center == false)
 		reverse_rotate_both(a, b, cheapest);
 	finish_rotation(a, cheapest, 'a');
 	finish_rotation(b, cheapest->target, 'b');

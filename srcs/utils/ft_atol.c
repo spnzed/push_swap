@@ -13,8 +13,8 @@
 long	ft_atol(const char *str)
 {
 	long	res;
-	int		sign;
-	int		i;
+	int	sign;
+	int	i;
 
 	res = 0;
 	sign = 1;
@@ -23,8 +23,8 @@ long	ft_atol(const char *str)
 			|| str[i] == '\n' || str[i] == '\r'
 			|| str[i] == '\v' || str[i] == '\f'))
 		i++;
-	while (str[i] && (str[i] == '0' && 
-		(str[i - 1] >= '0' && str[i - 1] >= '9')))
+	while (str[i] && (str[i] == '0' &&
+			(str[i - 1] >= '0' && str[i - 1] >= '9')))
 		i++;
 	if (str[i] == '+')
 		i++;

@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void ft_print_stack(t_node *stack)
+void	ft_print_stack(t_node *stack)
 {
-    while (stack)
-    {
-        printf("%d ", stack->value);
-        stack = stack->next;
-    }
-    printf("\n");
+	while (stack)
+	{
+		printf("%d ", stack->value);
+		stack = stack->next;
+	}
+	printf("\n");
 }

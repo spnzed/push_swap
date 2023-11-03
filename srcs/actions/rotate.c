@@ -14,21 +14,21 @@
 
 static void	rotate(t_node **head)
 {
-	t_node *first;
-	t_node *aux;
-	
-    if (ft_lst_size(*head) > 1)
-    {
-        first = (*head);
-        aux = NULL;
-	    if (first->next)
-	 	    aux = (first)->next;
-        (first)->next = NULL;
-        ft_lstadd_blinked(&aux, first);
-        *head = aux;
-    }
-    else
-        return ;
+	t_node	*first;
+	t_node	*aux;
+
+	if (ft_lst_size(*head) > 1)
+	{
+		first = (*head);
+		aux = NULL;
+		if (first->next)
+			aux = (first)->next;
+		(first)->next = NULL;
+		ft_lstadd_blinked(&aux, first);
+		*head = aux;
+	}
+	else
+		return ;
 }
 
 void	ra(t_node **a)

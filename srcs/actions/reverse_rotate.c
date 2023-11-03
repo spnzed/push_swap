@@ -23,15 +23,15 @@ static void	reverse_rotate(t_node **head)
 	{
 		first = *head;
 		last = ft_lst_last(*head);
-        new_end = last->prev;
-        new_end->next = NULL;
+		new_end = last->prev;
+		new_end->next = NULL;
 		last->prev = NULL;
-        if (first->next)
-            aux = first;
-        ft_lstadd_flinked(head, last);
+		if (first->next)
+			aux = first;
+		ft_lstadd_flinked(head, last);
 	}
-    else
-        return ;
+	else
+		return ;
 }
 
 void	rra(t_node **a)

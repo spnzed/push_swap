@@ -14,7 +14,7 @@
 
 static void	ft_reorder(t_node **stack)
 {
-	t_node *smallest;
+	t_node	*smallest;
 
 	smallest = ft_find_smallest(*stack);
 	while ((*stack)->value != smallest->value)
@@ -26,7 +26,7 @@ static void	ft_reorder(t_node **stack)
 	}
 }
 
-void ft_lil_sort(t_node **stack)
+void	ft_lil_sort(t_node **stack)
 {
 	int		first;
 	int		second;
@@ -53,9 +53,9 @@ void ft_lil_sort(t_node **stack)
 		rra(stack);
 }
 
-void ft_sort(t_node **a, t_node **b)
+void	ft_sort(t_node **a, t_node **b)
 {
-	int 	len_a;
+	int	len_a;
 
 	len_a = ft_lst_size(*a);
 	if (len_a-- > 3 && !ft_lst_sorted(*a))
@@ -70,8 +70,8 @@ void ft_sort(t_node **a, t_node **b)
 	ft_lil_sort(a);
 	while (*b)
 	{
-	 	ft_init_back(*a, *b);
-	 	ft_move_back(a, b);
+		ft_init_back(*a, *b);
+		ft_move_back(a, b);
 	}
 	set_current_position(*a);
 	ft_reorder(a);
