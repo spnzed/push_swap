@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:46:42 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/31 17:43:15 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:46:23 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,13 @@ void	ft_move_nodes(t_node **a, t_node **b)
 	t_node	*cheapest;
 
 	cheapest = ft_return_cheapest(*a);
-	if (cheapest->exceeds_center == true &&
-		cheapest->target->exceeds_center == true)
+	if (cheapest->exceeds_center == true
+		&& cheapest->target->exceeds_center == true)
 		rotate_both(a, b, cheapest);
-	else if (cheapest->exceeds_center == false && 
-		cheapest->target->exceeds_center == false)
+	else if (cheapest->exceeds_center == false
+		&& cheapest->target->exceeds_center == false)
 		reverse_rotate_both(a, b, cheapest);
 	finish_rotation(a, cheapest, 'a');
 	finish_rotation(b, cheapest->target, 'b');
 	pb(b, a);
-}
-
-void	ft_move_back(t_node **a, t_node **b)
-{
-	finish_rotation(a, (*b)->target, 'a');
-	pa(b, a);
 }

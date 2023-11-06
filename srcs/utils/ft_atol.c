@@ -6,15 +6,15 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:49:00 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/01 15:40:13 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:50:25 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 long	ft_atol(const char *str)
 {
 	long	res;
-	int	sign;
-	int	i;
+	int		sign;
+	int		i;
 
 	res = 0;
 	sign = 1;
@@ -23,8 +23,8 @@ long	ft_atol(const char *str)
 			|| str[i] == '\n' || str[i] == '\r'
 			|| str[i] == '\v' || str[i] == '\f'))
 		i++;
-	while (str[i] && (str[i] == '0' &&
-			(str[i - 1] >= '0' && str[i - 1] >= '9')))
+	while (str[i] && (str[i] == '0'
+			&& (str[i - 1] >= '0' && str[i - 1] >= '9')))
 		i++;
 	if (str[i] == '+')
 		i++;

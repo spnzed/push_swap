@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:32:35 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/31 15:33:41 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:48:50 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	set_target_node(t_node *a, t_node *b, char which)
 	{
 		while (current_b)
 		{
-			if (best_index < current_b->value &&
-				current_b->value < a->value && which == 'a')
+			if (best_index < current_b->value
+				&& current_b->value < a->value && which == 'a')
 			{
 				best_index = current_b->value;
 				target = current_b;
 			}
-			else if (best_index > current_b->value &&
-				current_b->value > a->value && which == 'b')
+			else if (best_index > current_b->value
+				&& current_b->value > a->value && which == 'b')
 			{
 				best_index = current_b->value;
 				target = current_b;
@@ -72,7 +72,7 @@ void	set_target_node(t_node *a, t_node *b, char which)
 	}
 }
 
-static void set_price(t_node *a, t_node *b)
+static void	set_price(t_node *a, t_node *b)
 {
 	int	len_a;
 	int	len_b;
@@ -92,9 +92,9 @@ static void set_price(t_node *a, t_node *b)
 	}
 }
 
-static void set_cheapest(t_node *stack)
+static void	set_cheapest(t_node *stack)
 {
-	t_node 	*cheapest_node;
+	t_node	*cheapest_node;
 	long	cheapest_price;
 
 	cheapest_price = LONG_MAX;
@@ -110,18 +110,11 @@ static void set_cheapest(t_node *stack)
 	cheapest_node->cheapest = true;
 }
 
-void ft_init_nodes(t_node *a, t_node *b)
+void	ft_init_nodes(t_node *a, t_node *b)
 {
 	set_current_position(a);
 	set_current_position(b);
 	set_target_node(a, b, 'a');
 	set_price(a, b);
 	set_cheapest(a);
-}
-
-void ft_init_back(t_node *a, t_node *b)
-{
-	set_current_position(a);
-	set_current_position(b);
-	set_target_node(b, a, 'b');
 }

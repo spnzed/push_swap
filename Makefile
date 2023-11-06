@@ -16,6 +16,7 @@ SRC_ACTION_FILES = 		swap.c \
 SRCS_MAIN_DIR = 		srcs/main/
 SRC_MAIN_FILES = 		error_free.c \
 						genstack.c \
+						nodes_back.c \
 						nodes_init.c \
 						nodes_move.c \
 						sort.c \

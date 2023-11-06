@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/02 17:46:05 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:44:13 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	main(int argc, char **argv)
 		stack_b = init_stacks(stack_a, stack_b, true);
 	if (stack_a && stack_b)
 	{
-		first_A = stack_a;
-		first_B = stack_b;
+		first_a = stack_a;
+		first_b = stack_b;
 		fill_stack(argc, argv, &stack_a);
 		init_sorts(&stack_a, &stack_b, first_a, first_b);
 		return (0);
