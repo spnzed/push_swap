@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:32:35 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/06 12:59:58 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:48:57 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	set_target_node(t_node *a, t_node *b)
 	t_node	*current_b;
 	long	best_index;
 
-	current_b = b;
-	best_index = LONG_MIN;
 	while (a)
 	{
+		best_index = LONG_MIN;
+		current_b = b;
 		while (current_b)
 		{
 			if (best_index < current_b->value
