@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:32:35 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/06 12:48:50 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:59:58 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,28 @@ void	set_current_position(t_node *stack)
 	}
 }
 
-void	set_target_node(t_node *a, t_node *b, char which)
+void	set_target_node(t_node *a, t_node *b)
 {
 	t_node	*target;
 	t_node	*current_b;
 	long	best_index;
 
 	current_b = b;
-	if (which == 'a')
-		best_index = LONG_MIN;
-	else
-		best_index = LONG_MAX;
+	best_index = LONG_MIN;
 	while (a)
 	{
 		while (current_b)
 		{
 			if (best_index < current_b->value
-				&& current_b->value < a->value && which == 'a')
-			{
-				best_index = current_b->value;
-				target = current_b;
-			}
-			else if (best_index > current_b->value
-				&& current_b->value > a->value && which == 'b')
+				&& current_b->value < a->value)
 			{
 				best_index = current_b->value;
 				target = current_b;
 			}
 			current_b = current_b->next;
 		}
-		if (best_index == LONG_MIN && which == 'a')
+		if (best_index == LONG_MIN)
 			a->target = ft_find_biggest(b);
-		else if (best_index == LONG_MAX && which == 'b')
-			a->target = ft_find_smallest(b);
 		else
 			a->target = target;
 		a = a->next;
@@ -114,7 +103,7 @@ void	ft_init_nodes(t_node *a, t_node *b)
 {
 	set_current_position(a);
 	set_current_position(b);
-	set_target_node(a, b, 'a');
+	set_target_node(a, b);
 	set_price(a, b);
 	set_cheapest(a);
 }

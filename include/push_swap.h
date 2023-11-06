@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/06 12:52:07 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:00:40 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_lil_sort(t_node **stack);
 void	ft_sort(t_node **a, t_node **b);
 //	nodes_init.c
 void	set_current_position(t_node *stack);
-void	set_target_node(t_node *a, t_node *b, char which);
+void	set_target_node(t_node *a, t_node *b);
 void	ft_init_nodes(t_node *a, t_node *b);
 void	ft_init_back(t_node *a, t_node *b);
 //	nodes_move.c
