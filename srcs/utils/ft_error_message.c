@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error_message.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaronespinosa <aaronespinosa@student.42    +#+  +:+       +#+        */
+/*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:13:33 by aaespino          #+#    #+#             */
-/*   Updated: 2023/10/17 00:38:57 by aaronespino      ###   ########.fr       */
+/*   Updated: 2023/11/07 15:41:39 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//1 not valid input
+//2 input is not a digit
+//3 duplicated digits
+//4 number exceeds int MIN
+//5 number exceeds int MAX
 int	ft_error_message(char num)
 {
 	if (num)
@@ -19,15 +24,15 @@ int	ft_error_message(char num)
 		if (num == '0')
 			ft_putstr_fd("Error\n", 2);
 		if (num == '1')
-			ft_putstr_fd("Error, not valid input\n", 2);
+			ft_putstr_fd("Error\n", 2);
 		if (num == '2')
-			ft_putstr_fd("Error, input is not a digit\n", 2);
+			ft_putstr_fd("Error\n", 2);
 		if (num == '3')
-			ft_putstr_fd("Error, duplicated digits\n", 2);
+			ft_putstr_fd("Error\n", 2);
 		if (num == '4')
-			ft_putstr_fd("Error, number exceeds int MIN\n", 2);
+			ft_putstr_fd("Error\n", 2);
 		if (num == '5')
-			ft_putstr_fd("Error, number exceeds int MAX\n", 2);
+			ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	else
