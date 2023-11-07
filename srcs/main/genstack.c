@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:16:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/01 16:24:27 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:18:09 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	gen_stack(t_node **stack, char **nums, bool argc2)
 	int	nbr;
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (nums[i])
 	{
 		if (ft_error_syntax(nums[i]))
@@ -66,7 +66,7 @@ void	gen_stack(t_node **stack, char **nums, bool argc2)
 		if (ft_error_max(nums[i]))
 			ft_error_free(stack, nums, argc2);
 		nbr = ft_atoi(nums[i]);
-		if (ft_error_duplicate(*stack, (int)nbr))
+		if (ft_error_duplicate(*stack, (int)nbr, i))
 			ft_error_free(stack, nums, argc2);
 		merge_nodes(stack, nbr);
 		i++;

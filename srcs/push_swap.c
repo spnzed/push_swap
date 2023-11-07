@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/07 15:21:55 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:36:33 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,34 @@ static t_node	*init_stacks(t_node *stack_a, t_node *stack_b, bool flag)
 	}
 }
 
-static void	arguments_check(int argc, char **argv)
+static bool	arguments_check(int argc, char **argv)
 {
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return ;
+	{
+		if (!argv[1][0])
+			ft_error_message('0');
+		return false;
+	}
+	return true;
 }
 
 static void	fill_stack(int argc, char **argv, t_node **stack_a)
 {
+	char **aux;
+
+	aux = argv;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if (!argv)
+		{
+			ft_error_message('1');
+			exit(1);
+		}
 		gen_stack (stack_a, argv + 1, true);
 	}
 	else
-		gen_stack (stack_a, argv, false);
+		gen_stack (stack_a, argv + 1, false);
 }
 
 static void	init_sorts(t_node **a, t_node **b, t_node *A, t_node *B)
@@ -79,7 +92,8 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	first_a = NULL;
 	first_b = NULL;
-	arguments_check(argc, argv);
+	if (!(arguments_check(argc, argv)))
+		return (1);
 	stack_a = init_stacks(stack_a, stack_b, false);
 	if (stack_a)
 		stack_b = init_stacks(stack_a, stack_b, true);

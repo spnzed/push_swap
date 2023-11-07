@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/06 13:00:40 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:17:11 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	rrr(t_node **a, t_node **b);
 void	ft_error_free(t_node **stack, char **argv, bool argc2);
 int		ft_error_syntax(char *num);
 int		ft_error_max(char *str);
-int		ft_error_duplicate(t_node *node, int num);
+int		ft_error_duplicate(t_node *node, int num, int index);
 //	gen_stack.c
 void	merge_nodes(t_node **stack, int nbr);
 void	gen_stack(t_node **stack, char **nums, bool argc2);
@@ -83,7 +83,6 @@ bool	ft_lst_sorted(t_node *stack);
 t_node	*ft_lst_last(t_node *node);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_isdigit(int i);
-void	ft_print_stack(t_node *stack);
 t_node	*ft_find_smallest(t_node *stack);
 t_node	*ft_find_biggest(t_node *stack);
 

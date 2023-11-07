@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:11:45 by utente            #+#    #+#             */
-/*   Updated: 2023/11/01 15:47:20 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:38:37 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ static int	count_words(char *str, char separator)
 	return (count);
 }
 
+/*
+ * I exploit static variables
+ * which are basically 
+ * "Global private variables"
+ * i can access it only via the get_next_word function
+*/
 static char	*get_next_word(char *str, char separator)
 {
 	static int	cursor = 0;
@@ -59,6 +65,19 @@ static char	*get_next_word(char *str, char separator)
 	return (next_str);
 }
 
+/*
+ * I recreate an argv in the HEAP
+ *
+ * +2 because i want to allocate space
+ * for the "\0" Placeholder and the final NULL
+ *
+ * vector_strings-->[p0]-> "\0" Placeholder to mimic argv
+ * 				 |->[p1]->"Hello"
+ * 				 |->[p2]->"how"
+ * 				 |->[p3]->"Are"
+ * 				 |->[..]->"..""
+ * 				 |->[NULL]
+*/
 char	**ft_split(char *str, char separator)
 {
 	int		words_number;
@@ -68,7 +87,7 @@ char	**ft_split(char *str, char separator)
 	i = 0;
 	words_number = count_words(str, separator);
 	if (!words_number)
-		exit(1);
+		return (NULL);
 	vector_strings = malloc(sizeof(char *) * (size_t)(words_number + 2));
 	if (NULL == vector_strings)
 		return (NULL);
@@ -85,5 +104,9 @@ char	**ft_split(char *str, char separator)
 		vector_strings[i++] = get_next_word(str, separator);
 	}
 	vector_strings[i] = NULL;
+	if (!vector_strings)
+	{
+		return (NULL);
+	}
 	return (vector_strings);
 }

@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/07 15:16:29 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:16:41 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,17 @@ int	ft_error_max(char *str)
 //	Recorrer node 
 //		Si encuentras el num en el nodo
 //			retornas error con el mensaje que toque
-int	ft_error_duplicate(t_node *node, int num)
+int	ft_error_duplicate(t_node *node, int num, int index)
 {
 	if (!node)
 		return (0);
 	while (node)
 	{
-		if (node->value == num)
+		if (node->value == num && (index != 0))
+		{
+			printf("%d\n", num);
 			return (ft_error_message('3'));
+		}
 		node = node->next;
 	}
 	return (0);
