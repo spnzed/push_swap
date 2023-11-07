@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/06 12:49:22 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:16:29 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ int	ft_error_syntax(char *num)
 int	ft_error_max(char *str)
 {
 	long	nbr;
+	long	start;
 	int		digits;
 
-	digits = ft_strlen(str);
+	start = ft_num_begins(str);
+	digits = ft_strlen(str + start);
 	if (digits > 18)
 	{
 		if (str[0] == '-')
