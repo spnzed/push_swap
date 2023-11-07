@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/07 15:18:31 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:21:55 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	init_sorts(t_node **a, t_node **b, t_node *A, t_node *B)
 		else
 			ft_sort(a, b);
 	}
-	ft_print_stack(*a);
 	ft_free_stack(a);
 	ft_free_stack(&A);
 	ft_free_stack(&B);
