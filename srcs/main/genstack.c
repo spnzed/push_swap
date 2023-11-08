@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:16:38 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/08 13:47:53 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:38:19 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ void	gen_stack(t_node **stack, char **nums, bool argc2)
 		i++;
 	}
 	if (argc2 == true)
-		ft_free_argv(nums);
+		ft_free_argc2(nums);
 }

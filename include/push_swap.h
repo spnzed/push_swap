@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/08 13:58:10 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:41:04 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 //	main
 //	error_free.c
-void	ft_error_free(t_node **stack, char **argv, bool argc2);
+void	ft_error_free(t_node **stack);
 int		ft_error_syntax(char *num);
 int		ft_error_max(char *str);
 int		ft_error_duplicate(t_node *node, int num, int index);
+void	check_2arg(char **argv, t_node **stack_a, size_t i);
 //	gen_stack.c
 void	merge_nodes(t_node **stack, int nbr);
 void	gen_stack(t_node **stack, char **nums, bool argc2);
@@ -74,6 +75,7 @@ size_t	ft_strlen(const char *str);
 //	new utils
 int		ft_error_message(char num);
 void	ft_free_argv(char **argv);
+void	ft_free_argc2(char **argv);
 void	ft_free_stack(t_node **stack);
 int		ft_num_begins(char *str);
 void	ft_lstadd_flinked(t_node **lst, t_node *new);

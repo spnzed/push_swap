@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:45:58 by aaespino          #+#    #+#             */
-/*   Updated: 2023/11/08 12:53:15 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:41:34 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@
 
 //ft_error_free hara lo siguiente
 //	usar free_stack
-void	ft_error_free(t_node **stack, char **argv, bool argc2)
+void	ft_error_free(t_node **stack)
 {
 	ft_free_stack(stack);
-	if (argc2)
-		ft_free_argv(argv);
 	exit (1);
 }
 
@@ -105,4 +103,30 @@ int	ft_error_duplicate(t_node *node, int num, int index)
 		node = node->next;
 	}
 	return (0);
+}
+
+void	check_2arg(char **argv, t_node **stack_a, size_t i)
+{
+	argv = ft_split(argv[1], ' ');
+	if (!argv || !*argv)
+	{
+		ft_error_message('1');
+		exit(1);
+	}
+	if (!argv[1])
+	{
+		while (i < ft_strlen(argv[0]))
+		{
+			if (argv[0][i] == '-' || argv[0][i] == '+'
+				|| !ft_isdigit(argv[0][i]))
+			{
+				ft_error_message('1');
+				break ;
+			}
+			i++;
+		}
+		ft_error_max (argv[0]);
+		exit (1);
+	}
+	gen_stack (stack_a, argv, true);
 }
