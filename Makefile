@@ -1,11 +1,8 @@
+
 NAME = push_swap
 
 SRCS_DIR = srcs/
 SRC_FILES =	push_swap.c \
-
-SRCS_LIB_DIR =			include/
-SRC_LIB_FILES =			action_lst.h \
-						push_swap.h \
 
 SRCS_ACTIONS_DIR = 		srcs/actions/
 SRC_ACTION_FILES = 		swap.c \
@@ -40,9 +37,6 @@ SRC_UTILS_FILES = 		ft_atoi.c \
 						ft_split.c \
 						ft_strlen.c \
 
-SRC_LIB_FILES = $(SRC_FILES:.c=.o)
-OBJS = $(addprefix $(SRCS_LIB_DIR), $(SRC_LIB_FILES))
-
 OBJS_DIR =	objs/
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJ_FILES))
@@ -59,32 +53,31 @@ OBJS_UTILS_DIR = objs/utils/
 OBJ_UTILS_FILES = $(SRC_UTILS_FILES:.c=.o)
 OBJS_ALGORITHM = $(addprefix $(OBJS_UTILS_DIR), $(OBJ_UTILS_FILES))
 
+DEPS = $(SRC_FILES.c=.d) $(SRC_ACTION_FILES.c=.d) $(SRC_MAIN_FILES.c=.d) $(SRC_UTILS_FILES.c=.d))
+
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -MMD
 RM = rm -f
 AR = ar rc
-INCLUDE = -I include/
+INCLUDE = -I include
+
 all: 		$(NAME)
 
-clean: 		
+clean:
 			@$(RM) $(OBJS)
 			@$(RM) $(OBJS_ACTIONS)
 			@$(RM) $(OBJS_ALGORITHM)
 			@$(RM) $(OBJS_PARSING)
- 
+
 fclean: 	clean
-			@$(RM) $(NAME) 
+			@$(RM) $(NAME)
 			@$(RM) -rf $(OBJS_DIR)
 
 re:			fclean all
 
-$(NAME):	$(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(OBJS_MAIN_DIR) $(OBJS_PARSING) $(OBJS_UTILS_DIR) $(OBJS_ALGORITHM) 
-			@$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) $(OBJS_PARSING) $(OBJS_ALGORITHM) -o $@
+$(NAME):	$(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(OBJS_MAIN_DIR) $(OBJS_PARSING) $(OBJS_UTILS_DIR) $(OBJS_ALGORITHM)
+			@$(CC) $(CFLAGS) $(OBJS) $(OBJS_ACTIONS) $(OBJS_PARSING) $(OBJS_ALGORITHM) -o $@
 
-$(SRCS_DIR):
-						@mkdir $@
-$(SRC_LIB_FILES):
-						@mkdir $@
 $(OBJS_DIR):
 						@mkdir $@
 $(OBJS_ACTIONS_DIR):
@@ -94,21 +87,18 @@ $(OBJS_MAIN_DIR):
 $(OBJS_UTILS_DIR):
 						@mkdir $@
 
-$(SRC_LIB_FILES)%.o:	$(SRCS_DIR)%.c
-				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c Makefile include/push_swap.h
+				$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
-				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+$(OBJS_ACTIONS_DIR)%.o:	$(SRCS_ACTIONS_DIR)%.c Makefile include/push_swap.h
+				$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(OBJS_ACTIONS_DIR)%.o:	$(SRCS_ACTIONS_DIR)%.c
-				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+$(OBJS_MAIN_DIR)%.o:	$(SRCS_MAIN_DIR)%.c Makefile include/push_swap.h
+				$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(OBJS_MAIN_DIR)%.o:	$(SRCS_MAIN_DIR)%.c
-				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+$(OBJS_UTILS_DIR)%.o:	$(SRCS_UTILS_DIR)%.c Makefile include/push_swap.h
+				$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(OBJS_UTILS_DIR)%.o:	$(SRCS_UTILS_DIR)%.c
-				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
-
-
+-include $(DEPS)
 
 .PHONY: all clean fclean re bonus
