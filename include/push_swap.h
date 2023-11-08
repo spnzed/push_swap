@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:48:55 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/07 19:17:11 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:58:10 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	finish_rotation(t_node **stack, t_node *top, char which);
 //	utils
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
-char	**ft_split(char *str, char separator);
+char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 //	new utils
 int		ft_error_message(char num);

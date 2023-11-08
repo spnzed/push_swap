@@ -6,7 +6,7 @@
 /*   By: aaespino <aaespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:29:41 by aaronespino       #+#    #+#             */
-/*   Updated: 2023/11/07 18:36:33 by aaespino         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:57:58 by aaespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,27 @@ static t_node	*init_stacks(t_node *stack_a, t_node *stack_b, bool flag)
 
 static bool	arguments_check(int argc, char **argv)
 {
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-	{
-		if (!argv[1][0])
-			ft_error_message('0');
-		return false;
-	}
-	return true;
+	if (argc == 1)
+		return (false);
+	else if (argc == 2 && !argv[1][0])
+		ft_error_message('0');
+	return (true);
 }
 
 static void	fill_stack(int argc, char **argv, t_node **stack_a)
 {
-	char **aux;
+	char	**aux;
 
 	aux = argv;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		if (!argv)
+		if (!argv || !*argv)
 		{
 			ft_error_message('1');
 			exit(1);
 		}
-		gen_stack (stack_a, argv + 1, true);
+		gen_stack (stack_a, argv, true);
 	}
 	else
 		gen_stack (stack_a, argv + 1, false);
