@@ -3,8 +3,6 @@
 	
   <i>42cursus' project #7</i>
 
-<i>UNDER CONSTRUCTION ⚠️</i>
-
 </h2>
 Algorithm project where we must sort a given list of random numbers with a limited set of instructions, using the lowest possible number of actions.
   <h1 align=center>
